@@ -1,0 +1,6 @@
+input::placeholder,
+textarea::placeholder {
+font-weight: bold;
+color: grey;
+font-family: Arial, Helvetica, sans-serif;
+}

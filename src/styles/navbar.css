@@ -1,0 +1,25 @@
+.burger svg {
+  font-size: 38px;
+}
+.navbarLogo svg {
+  font-size: 36px;
+}
+
+.navbar a {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.navbar a:hover {
+  transition: 0.2s ease-in;
+}
+#closeMenu:hover {
+  color: tomato;
+}
+
+
+
+
+
+
+
+
+
