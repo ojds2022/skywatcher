@@ -1,143 +1,147 @@
-
 #appear {
   animation: appear 10.5s ease-out forwards;
 }
 
+#home-container {
+background-position: center;
+background-size: cover;
+}
+
 #lunarPhaseContainer {
-  display: none;
-  width: 75%;
-  height: 45vh;
-  border-radius: 15px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-position: center;
-  background-size: 300px 200px;
-  background-repeat: no-repeat;
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 0 1em;
-  z-index: 200;
+display: none;
+width: 75%;
+height: 45vh;
+border-radius: 15px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-position: center;
+background-size: 300px 200px;
+background-repeat: no-repeat;
+background-color: rgba(0, 0, 0, 0.8);
+padding: 0 1em;
+z-index: 200;
 }
 
 #close-button2 {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 5px;
-  left: 5px;
-  z-index: 200;
-  background: black;
-  border: black;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
+position: absolute;
+width: 20px;
+height: 20px;
+top: 5px;
+left: 5px;
+z-index: 200;
+background: black;
+border: black;
+border-radius: 5px;
+color: white;
+font-weight: bold;
 }
 
 #title {
-  animation: disappear 1s ease forwards 9s;
+animation: disappear 1s ease forwards 9s;
 }
 
 #logo {
-  width: 90%;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: fill 0.5s ease forwards 5.65s;
+width: 90%;
+position: absolute;
+top: 40%;
+left: 50%;
+transform: translate(-50%, -50%);
+animation: fill 0.5s ease forwards 5.65s;
 }
 
 
 #path1 { /* selects and animates each letter 1-by-1 */
-  stroke-dasharray: 1663.21289;
-  stroke-dashoffset: 1663.21289;
-  animation: line-anim 5s ease forwards .4s;
+stroke-dasharray: 1663.21289;
+stroke-dashoffset: 1663.21289;
+animation: line-anim 5s ease forwards .4s;
 }
 #path2 {
-  stroke-dasharray: 1618.801;
-  stroke-dashoffset: 1618.801;
-  animation: line-anim 5s ease forwards .8s;
+stroke-dasharray: 1618.801;
+stroke-dashoffset: 1618.801;
+animation: line-anim 5s ease forwards .8s;
 }
 #path3 {
-  stroke-dasharray: 1203.791;
-  stroke-dashoffset: 1203.791;
-  animation: line-anim 5s ease forwards 1.2s;
+stroke-dasharray: 1203.791;
+stroke-dashoffset: 1203.791;
+animation: line-anim 5s ease forwards 1.2s;
 }
 #path4 {
-  stroke-dasharray: 2671.156;
-  stroke-dashoffset: 2671.156;
-  animation: line-anim 5s ease forwards 1.6s;
+stroke-dasharray: 2671.156;
+stroke-dashoffset: 2671.156;
+animation: line-anim 5s ease forwards 1.6s;
 }
 #path5 {
-  stroke-dasharray: 1747.446;
-  stroke-dashoffset: 1747.446;
-  animation: line-anim 5s ease forwards 2s;
+stroke-dasharray: 1747.446;
+stroke-dashoffset: 1747.446;
+animation: line-anim 5s ease forwards 2s;
 }
 #path6 {
-  stroke-dasharray: 988.5;
-  stroke-dashoffset: 988.5;
-  animation: line-anim 5s ease forwards 2.4s;
+stroke-dasharray: 988.5;
+stroke-dashoffset: 988.5;
+animation: line-anim 5s ease forwards 2.4s;
 }
 #path7 {
-  stroke-dasharray: 1368.874;
-  stroke-dashoffset: 1368.874;
-  animation: line-anim 5s ease forwards 2.8s;
+stroke-dasharray: 1368.874;
+stroke-dashoffset: 1368.874;
+animation: line-anim 5s ease forwards 2.8s;
 }
 #path8 {
-  stroke-dasharray: 1674.378;
-  stroke-dashoffset: 1674.378;
-  animation: line-anim 5s ease forwards 3.2s;
+stroke-dasharray: 1674.378;
+stroke-dashoffset: 1674.378;
+animation: line-anim 5s ease forwards 3.2s;
 }
 #path9 {
-  stroke-dasharray: 1516.116;
-  stroke-dashoffset: 1516.116;
-  animation: line-anim 5s ease forwards 3.6s;
+stroke-dasharray: 1516.116;
+stroke-dashoffset: 1516.116;
+animation: line-anim 5s ease forwards 3.6s;
 }
 #path10 {
-  stroke-dasharray: 1880.372;
-  stroke-dashoffset: 1880.372;
-  animation: line-anim 5s ease forwards 4s;
+stroke-dasharray: 1880.372;
+stroke-dashoffset: 1880.372;
+animation: line-anim 5s ease forwards 4s;
 }
 
 @keyframes line-anim {
-  to {
-    stroke-dashoffset: 0;
-  }
+to {
+  stroke-dashoffset: 0;
+}
 }
 @keyframes fill {
-  from {
-    fill: transparent;
-  }
-  to {
-    fill: white;
-  }
+from {
+  fill: transparent;
+}
+to {
+  fill: white;
+}
 }
 @keyframes disappear {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+from {
+  opacity: 1;
+}
+to {
+  opacity: 0;
+}
 }
 @keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  99% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+0% {
+  opacity: 0;
+}
+99% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
 }
 @keyframes pulse {
-  from {
-    transform: scale(1);
-    transform-origin: center;
-  }
-  to {
-    transform: scale(1.1);
-    transform-origin: center
-  }
+from {
+  transform: scale(1);
+  transform-origin: center;
+}
+to {
+  transform: scale(1.1);
+  transform-origin: center
+}
 }

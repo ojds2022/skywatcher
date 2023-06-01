@@ -20,15 +20,15 @@ function Navbar() {
                     <button id="arrowUp" className='bg-transparent border-0 cursor-pointer' onClick={toggleNavbar}>
                         <KeyboardArrowUpIcon />
                     </button>
-                    <Link to="/skywatcher"><span className='text-xl text-white md:text-2xl xl:text-3xl 3xl:text-6xl hover:text-pale-green'>Home</span></Link>
+                    <Link to="/"><span className='text-xl text-white md:text-2xl xl:text-3xl 3xl:text-6xl hover:text-pale-green'>Home</span></Link>
                     <Link to="/about"><span className='text-xl text-white md:text-2xl xl:text-3xl 3xl:text-6xl hover:text-pale-green'>About</span></Link>
-                    <Link to="/"><span className='text-xl text-white md:text-2xl xl:text-3xl 3xl:text-6xl hover:text-pale-green'>Portfolio</span></Link>
+                    {/*<Link to="/"><span className='text-xl text-white md:text-2xl xl:text-3xl 3xl:text-6xl hover:text-pale-green'>Portfolio</span></Link>*/}
                 </div>
             </div>
           :
             <div className="absolute top-0 left-0 z-20 flex flex-row w-full navbar h-14 xl:h-20 3xl:h-32 bg-light-purple bg-opacity-70">
                 <div className="flex items-center justify-between px-6 grow">
-                    <Link to="/skywatcher">
+                    <Link to="/">
                         <span id="navbarLogo" className='pt-1 text-white cursor-pointer hover:text-pale-green'><Brightness4SharpIcon /></span>
                     </Link>
                     <button id="burger" className='bg-transparent border-0 cursor-pointer' onClick={toggleNavbar}>

@@ -7,16 +7,16 @@ import '../styles/footer.css';
 
 function Footer() {
     return (
-      <div className="w-full h-14 bg-light-purple bg-opacity-70 absolute bottom-0 left-0 flex flex-col justify-center z-20">
-          <div className="socialMedia text-white cursor-pointer pt-2">
-              <span className='hover:text-pale-green'><InstagramIcon /></span>
-              <span className='hover:text-pale-green'><TwitterIcon /></span>
-              <span className='hover:text-pale-green'><FacebookIcon /></span>
-              <span className='hover:text-pale-green'><LinkedInIcon /></span>
-          </div>
-          <p className='text-white pb-2'> &copy; 2022 skywatcher.com </p>
-      </div>
-    );
-}
+        <div className="absolute bottom-0 left-0 z-20 flex flex-col justify-center w-full h-14 xl:h-20 3xl:h-32 bg-light-purple bg-opacity-70">
+            <div id="socialMedia" className="pt-2 text-center text-white cursor-pointer">
+                <span className='hover:text-pale-green'><InstagramIcon /></span>
+                <span className='hover:text-pale-green'><TwitterIcon /></span>
+                <span className='hover:text-pale-green'><FacebookIcon /></span>
+                <span className='hover:text-pale-green'><LinkedInIcon /></span>
+            </div>
+            <p className='text-sm text-center text-white xl:text-lg 3xl:text-3xl'> &copy; 2022 skywatcher.com </p>
+        </div>
+      );
+  }
 
 export default Footer;

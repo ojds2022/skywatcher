@@ -48,25 +48,25 @@ const AstroInfo = () => {
     return (
         <div>
             {showAstroInfo === true ? 
-                <div className='text-white w-11/12 bg-turquoise bg-opacity-40 mx-auto mt-20 rounded-xl pl-2 pb-8'>
+                <div className='w-11/12 pb-8 pl-2 mx-auto text-white bg-turquoise bg-opacity-40 rounded-xl'>
                     <div className='flex flex-row justify-between'>
-                        <h1 className='text-2xl font-bold py-2 mx-auto'>{location}</h1>
-                        <button className='pr-4 hover:text-red-500 text-xl' onClick={closeAstroInfo}><CloseIcon fontSize='medium' /></button>
+                        <h1 className='py-2 mx-auto text-2xl font-bold xl:text-4xl 3xl:text-7xl'>{location}</h1>
+                        <button className='pr-4 text-xl hover:text-red-500' onClick={closeAstroInfo}><CloseIcon fontSize='large' /></button>
                     </div>
-                    <ul className='text-left text-lg'>
-                        <li className='mb-4 font-bold'>Sunrise: <span className='text-pale-green'>{sunrise}</span></li>
-                        <li className='mb-4 font-bold'>Sunset: <span className='text-pale-green'>{sunset}</span></li>
-                        <li className='mb-4 font-bold'>Moonrise: <span className='text-pale-green'>{moonrise}</span></li>
-                        <li className='mb-4 font-bold'>Moonset: <span className='text-pale-green'>{moonset}</span></li>
-                        <li className='flex flex-row mb-4 font-bold'>Lunar phase: <Link to='/lunar'><button className='bg-light-yellow hover:bg-yellow-300 text-navy p-1 rounded-lg ml-3'>{lunarPhase}</button></Link></li>
-                        <li className='font-bold'>Moon illumination: <span className='text-yellow-200'>{moonIll}</span></li>
+                    <ul className='text-lg lg:text-xl xl:text-3xl 3xl:text-6xl'>
+                        <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Sunrise: <span className='mr-10 text-pale-green'>{sunrise}</span></li>
+                        <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Sunset: <span className='mr-10 text-pale-green'>{sunset}</span></li>
+                        <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Moonrise: <span className='mr-10 text-pale-green'>{moonrise}</span></li>
+                        <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Moonset: <span className='mr-10 text-pale-green'>{moonset}</span></li>
+                        <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Lunar phase: <Link to='/lunar'><button className='p-1 mr-10 rounded-lg bg-light-yellow hover:bg-yellow-300 text-navy xl:p-3 3xl:p-6 3xl:rounded-xl'>{lunarPhase}</button></Link></li>
+                        <li className='flex flex-row justify-between ml-2 font-bold xl:pb-3 3xl:pb-20'>Moon illumination: <span className='mr-10 text-yellow-200'>{moonIll}</span></li>
                     </ul>
                 </div>
                 :
-                <div className="w-full h-40 mt-44">
-                      <h2 className='text-white text-xl font-bold'>Enter your city or zip-code:</h2>
-                      <input id="inputField" className='focus:outline-none' type="text" placeholder="Enter here..."/>
-                      <button className='hover:bg-pale-green bg-green-600 rounded m-1 px-1' type="submit" onClick={fetchAstronomyInfo}>Search</button>
+                <div className="px-2 pb-4 text-center bg-turquoise bg-opacity-40 rounded-xl 3xl:rounded-2xl xl:py-3 3xl:py-8">
+                      <h2 className='mb-5 text-xl font-bold text-white md:text-2xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter your city or zip-code:</h2>
+                      <input id="inputField" className='focus:outline-none md:w-44 md:h-7 xl:w-60 xl:h-10 xl:text-lg 3xl:w-80 3xl:h-16 3xl:text-3xl' type="text" placeholder="Enter here..."/>
+                      <button className='px-1 ml-2 text-white rounded hover:bg-pale-green bg-light-purple hover:text-black md:h-7 md:w-16 xl:h-10 xl:w-20 xl:text-lg xl:ml-5 3xl:h-16 3xl:w-32 3xl:rounded-xl' type="submit" onClick={fetchAstronomyInfo}>Search</button>
                 </div>
             }
         </div>

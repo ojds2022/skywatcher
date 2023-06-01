@@ -1,4 +1,28 @@
-.socialMedia svg {
+#socialMedia svg {
   font-size: 25px;
   margin: 2px 20px;
+} 
+@media screen and (min-width: 768px) {
+  #socialMedia svg {
+    font-size: 25px;
+    margin: 2px 30px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #socialMedia svg {
+    font-size: 30px;
+    margin: 2px 40px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  #socialMedia svg {
+    font-size: 40px;
+    margin: 2px 50px;
+  }
+}
+@media screen and (min-width: 2560px) {
+  #socialMedia svg {
+    font-size: 70px;
+    margin: 2px 100px;
+  }
 }

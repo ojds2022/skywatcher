@@ -40,11 +40,11 @@ const LunarPhase = () => {
     
 
   return (
-    <div className="home h-screen bg-center bg-cover flex flex-rows-3" style={{ backgroundImage: `url(${BannerImage})` }}>
-        <div className='w-3/4 m-auto row-start-2 z-50 px-2 pt-1 rounded-3xl bg-gray-500 bg-opacity-70 grid'>
+    <div id="home-container" className="grid h-screen grid-rows-3" style={{ backgroundImage: `url(${BannerImage})` }}>
+        <div className='z-50 grid w-3/4 row-start-2 px-4 pt-1 m-auto lg:w-1/2 md:row-start-1 md:mt-24 lg:mt-32 xl:mt-40 3xl:mt-80 md:px-8 xl:pt-3 3xl:pl-20 3xl:pt-10 rounded-3xl bg-turquoise bg-opacity-70'>
             <div className='flex justify-end'>
                 <Link to='/'>
-                    <CloseIcon  className='hover:text-red-500' />
+                    <CloseIcon  className='hover:text-red-500' fontSize="large" />
                 </Link>
             </div>
             {lunarImage === 'Full Moon' ? <img className='rounded-3xl opacity-90' src={FullMoon} alt='' />
@@ -57,7 +57,7 @@ const LunarPhase = () => {
             : lunarImage === 'First Quarter' ? <img className='rounded-3xl opacity-90' src={FirstQuarterMoon} alt='' />
             : <div></div>
             }
-            <span className='text-2xl font-bold py-1'>{lunarImage}</span>
+            <span className='py-1 text-2xl font-bold text-center xl:text-4xl 3xl:text-7xl'>{lunarImage}</span>
         </div>
     </div>
   );
