@@ -14,7 +14,7 @@ function Footer() {
                 <span className='hover:text-pale-green'><FacebookIcon /></span>
                 <span className='hover:text-pale-green'><LinkedInIcon /></span>
             </div>
-            <p className='text-sm text-center text-white xl:text-lg 3xl:text-3xl'> &copy; 2022 skywatcher.com </p>
+            <p className='text-sm text-center text-white xl:text-lg 3xl:text-3xl'> &copy; 2023 skywatcher.com </p>
         </div>
       );
   }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 import '../styles/home.css';
@@ -44,6 +44,18 @@ const AstroInfo = () => {
     const closeAstroInfo = () => {
         setShowAstroInfo(!showAstroInfo);
     }
+
+    useEffect(() => {
+        const inputField = document.getElementById('inputField');
+        if (inputField) {
+          inputField.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+              event.preventDefault();
+              document.getElementById('searchButton').click();
+            }
+          });
+        }
+      },[]);
 
     return (
         <div>
