@@ -14,6 +14,16 @@ module.exports = {
         "navy": "#000080",
       }
     },
+    screens: {
+      'xxs': '330px',
+      'xs': '413px',
+      'sm': '640px',
+      'md': '767px',
+      'lg': '1023px',
+      'xl': '1280px',
+      '2xl': '1536px',
+      '3xl': '2560px',
+    },
   },
   plugins: [],
 }

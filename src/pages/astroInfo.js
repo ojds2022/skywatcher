@@ -70,7 +70,7 @@ const AstroInfo = () => {
                         <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Sunset: <span className='mr-10 text-pale-green'>{sunset}</span></li>
                         <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Moonrise: <span className='mr-10 text-pale-green'>{moonrise}</span></li>
                         <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Moonset: <span className='mr-10 text-pale-green'>{moonset}</span></li>
-                        <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Lunar phase: <Link to='/lunar'><button className='p-1 mr-10 rounded-lg bg-light-yellow hover:bg-yellow-300 text-navy xl:p-3 3xl:p-6 3xl:rounded-xl'>{lunarPhase}</button></Link></li>
+                        <li className='flex flex-row justify-between mb-4 ml-2 font-bold text-left xl:pb-3 3xl:pb-20'>Lunar phase: <span className='px-2 text-sm font-thin text-left xl:font-normal xl:text-base 2xl:font-semibold 2xl:text-xl'>click to<br /> learn more &#8594;</span><Link to='/lunar'><button className='p-1 mr-10 rounded-lg bg-light-yellow hover:bg-yellow-300 text-navy xl:p-3 3xl:p-6 3xl:rounded-xl'>{lunarPhase}</button></Link></li>
                         <li className='flex flex-row justify-between ml-2 font-bold xl:pb-3 3xl:pb-20'>Moon illumination: <span className='mr-10 text-yellow-200'>{moonIll}</span></li>
                     </ul>
                 </div>
