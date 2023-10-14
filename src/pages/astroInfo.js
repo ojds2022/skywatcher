@@ -1,12 +1,21 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
+import SunnyLoop from '../assets/sunny-sky.mp4';
+import CloudyLoop from '../assets/cloudy-sky.mp4';
 import '../styles/home.css';
 
 const AstroInfo = () => {
     const [showAstroInfo, setShowAstroInfo] = useState(false);
-
+    
+    const [backgroundBanner, setBackgroundBanner] = useState('');
+    const [backgroundColor, setBackgroundColor] = useState('');
     const [location, setLocation] = useState('');
+    const [currentCond, setCurrentCond] = useState('');
+    const [currentCondIcon, setCurrentCondIcon] = useState('');
+    const [cloudScore, setCloudScore] = useState('');
+    const [tempF, setTempF] = useState('');
+    const [humidity, setHumidity] = useState('');
     const [sunrise, setSunrise] = useState('');
     const [sunset, setSunset] = useState('');
     const [moonrise, setMoonrise] = useState('');
@@ -16,6 +25,20 @@ const AstroInfo = () => {
 
     function fetchAstronomyInfo() {
         const userInput = document.querySelector('#inputField');
+        const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${userInput.value}`;
+        const options = {
+            method: 'GET',
+            headers: {
+                'X-RapidAPI-Key': '48cbe57e99msh59bbaa3d2989b86p1dd679jsn22273669dbf3',
+                'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+            }
+        };
+
+        fetch(url, options)
+            .then(response => response.json())
+            .then(response => postAstroInfo(response))
+            .catch(err => console.error(err));
+        {/*const userInput = document.querySelector('#inputField');
         const options = {
             method: 'GET',
             headers: {
@@ -27,18 +50,33 @@ const AstroInfo = () => {
         fetch(`https://weatherapi-com.p.rapidapi.com/astronomy.json?q=${userInput.value}`, options)
             .then(response => response.json())
             .then(response => postAstroInfo(response))
-            .catch(err => console.error(err));
+    .catch(err => console.error(err));*/}
     }
 
     const postAstroInfo = (data) => {
+        console.log(data.current.condition.text);
+        if (data.current.condition.text === 'Sunny') {
+            setBackgroundBanner(SunnyLoop);
+            setBackgroundColor('rgb(153, 153, 255, 0.5)');
+        } else if (data.current.condition.text === 'Cloudy') {
+            setBackgroundBanner(CloudyLoop);
+            setBackgroundColor('SteelBlue');
+        }
         setLocation(data.location.name);
+        setCurrentCond(data.current.condition.text);
+        setCurrentCondIcon(data.current.condition.icon);
+        setCloudScore(data.current.cloud);
+        setTempF(data.current.temp_f);
+        setHumidity(data.current.humidity);
+        setShowAstroInfo(!showAstroInfo);
+        {/*
         setSunrise(data.astronomy.astro.sunrise);
         setSunset(data.astronomy.astro.sunset);
         setMoonrise(data.astronomy.astro.moonrise);
         setMoonset(data.astronomy.astro.moonset);
         setLunarPhase(data.astronomy.astro.moon_phase);
         setMoonIll(data.astronomy.astro.moon_illumination);
-        setShowAstroInfo(!showAstroInfo);
+    */}
     }
 
     const closeAstroInfo = () => {
@@ -59,21 +97,32 @@ const AstroInfo = () => {
 
     return (
         <div>
-            {showAstroInfo === true ? 
-                <div className='w-11/12 pb-8 pl-2 mx-auto text-white bg-turquoise bg-opacity-40 rounded-xl'>
-                    <div className='flex flex-row justify-between'>
-                        <h1 className='py-2 mx-auto text-2xl font-bold xl:text-4xl 3xl:text-7xl'>{location}</h1>
-                        <button className='pr-4 text-xl hover:text-red-500' onClick={closeAstroInfo}><CloseIcon fontSize='large' /></button>
+            {showAstroInfo === true ?
+                <div className="grid h-screen grid-rows-3">
+                    <div id="banner-img" className="z-10 row-span-1" style={{ backgroundImage: `url(${backgroundBanner}`}}>
+                        <div className='w-11/12 mx-auto text-white mt-36 bg-turquoise bg-opacity-40 rounded-xl'>
+                            <div className='flex flex-row justify-between'>
+                                <h1 className='py-2 mx-auto text-2xl font-bold xl:text-4xl 3xl:text-7xl'>{location}</h1>
+                            </div>
+                            <div>
+                                <div>{tempF}</div>
+                                <div>{currentCond}</div>
+                                <div>{cloudScore}</div>
+                                <div>{humidity}</div>
+                                <div><img src={`${currentCondIcon}`} /></div>
+                            </div>
+                            {/*<ul className='text-lg lg:text-xl xl:text-3xl 3xl:text-6xl'>
+                                <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Sunrise: <span className='mr-10 text-pale-green'>{sunrise}</span></li>
+                                <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Sunset: <span className='mr-10 text-pale-green'>{sunset}</span></li>
+                                <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Moonrise: <span className='mr-10 text-pale-green'>{moonrise}</span></li>
+                                <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Moonset: <span className='mr-10 text-pale-green'>{moonset}</span></li>
+                                <li className='flex flex-row justify-between mb-4 ml-2 font-bold text-left xl:pb-3 3xl:pb-20'>Lunar phase: <span className='px-2 text-sm font-thin text-left xl:font-normal xl:text-base 2xl:font-semibold 2xl:text-xl'>click to<br /> learn more &#8594;</span><Link to='/lunar'><button className='p-1 mr-10 rounded-lg bg-light-yellow hover:bg-yellow-300 text-navy xl:p-3 3xl:p-6 3xl:rounded-xl'>{lunarPhase}</button></Link></li>
+                                <li className='flex flex-row justify-between ml-2 font-bold xl:pb-3 3xl:pb-20'>Moon illumination: <span className='mr-10 text-yellow-200'>{moonIll}</span></li>
+                            </ul>*/}
+                        </div>
                     </div>
-                    <ul className='text-lg lg:text-xl xl:text-3xl 3xl:text-6xl'>
-                        <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Sunrise: <span className='mr-10 text-pale-green'>{sunrise}</span></li>
-                        <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Sunset: <span className='mr-10 text-pale-green'>{sunset}</span></li>
-                        <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Moonrise: <span className='mr-10 text-pale-green'>{moonrise}</span></li>
-                        <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Moonset: <span className='mr-10 text-pale-green'>{moonset}</span></li>
-                        <li className='flex flex-row justify-between mb-4 ml-2 font-bold text-left xl:pb-3 3xl:pb-20'>Lunar phase: <span className='px-2 text-sm font-thin text-left xl:font-normal xl:text-base 2xl:font-semibold 2xl:text-xl'>click to<br /> learn more &#8594;</span><Link to='/lunar'><button className='p-1 mr-10 rounded-lg bg-light-yellow hover:bg-yellow-300 text-navy xl:p-3 3xl:p-6 3xl:rounded-xl'>{lunarPhase}</button></Link></li>
-                        <li className='flex flex-row justify-between ml-2 font-bold xl:pb-3 3xl:pb-20'>Moon illumination: <span className='mr-10 text-yellow-200'>{moonIll}</span></li>
-                    </ul>
-                </div>
+                    <div className='row-span-2' style={{backgroundColor: `${backgroundColor}`}}></div>
+                </div> 
                 :
                 <div className="px-2 pb-4 text-center bg-turquoise bg-opacity-40 rounded-xl 3xl:rounded-2xl xl:py-3 3xl:py-8">
                       <h2 className='mb-5 text-xl font-bold text-white md:text-2xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter your city or zip-code:</h2>

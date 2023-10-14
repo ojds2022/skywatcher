@@ -1,14 +1,14 @@
 import React from 'react';
 import { LogoAnimation } from '../components/logoAnimation';
 import { AstroInfo } from './astroInfo';
-import BannerImage from '../assets/nightSky.jpg';
+import BannerImage from '../assets/cloudy-sky.mp4';
 import '../styles/home.css';
 
 
 
 const Home = () => {
   return (
-    <div id="home-container" className="grid h-screen grid-rows-3" style={{ backgroundImage: `url(${BannerImage})` }}>
+    <div>
       <div>
         <h1 id="title">
             <LogoAnimation />

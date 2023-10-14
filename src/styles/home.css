@@ -2,9 +2,9 @@
   animation: appear 10.5s ease-out forwards;
 }
 
-#home-container {
-background-position: center;
-background-size: cover;
+#banner-img {
+background-position: bottom;
+
 }
 
 #lunarPhaseContainer {
