@@ -22,12 +22,15 @@ const AstroInfo = () => {
     const [cloudScore, setCloudScore] = useState('');
     const [tempF, setTempF] = useState('');
     const [humidity, setHumidity] = useState('');
+
+    const [weekday, setWeekday] = useState('');
+    const [nextWeekday, setNextWeekday] = useState('');
+
     const [sunrise, setSunrise] = useState('');
     const [sunset, setSunset] = useState('');
     const [moonrise, setMoonrise] = useState('');
     const [moonset, setMoonset] = useState('');
     const [lunarPhase, setLunarPhase] = useState('');
-    const [moonIll, setMoonIll] = useState('');
 
     function fetchAstronomyInfo() {
         const userInput = document.querySelector('#inputField');
@@ -44,23 +47,10 @@ const AstroInfo = () => {
             .then(response => response.json())
             .then(response => postAstroInfo(response))
             .catch(err => console.error(err));
-        {/*const userInput = document.querySelector('#inputField');
-        const options = {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': '48cbe57e99msh59bbaa3d2989b86p1dd679jsn22273669dbf3',
-                'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-            }
-        };
-    
-        fetch(`https://weatherapi-com.p.rapidapi.com/astronomy.json?q=${userInput.value}`, options)
-            .then(response => response.json())
-            .then(response => postAstroInfo(response))
-    .catch(err => console.error(err));*/}
     }
 
     const postAstroInfo = (data) => {
-        console.log(data.forecast.forecastday[1].day.condition.icon);
+        console.log(data);
         if (data.current.condition.text === 'Sunny') {
             setBackgroundBanner(SunnyLoop);
             setBackgroundColor('rgb(153, 153, 255, 0.5)');
@@ -77,6 +67,21 @@ const AstroInfo = () => {
             setBackgroundBanner(RainyLoop);
             setBackgroundColor('SteelBlue');
         }
+
+        const dateString = data.forecast.forecastday[0].date;
+
+        function getDayOfWeek(dateString) {
+            const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
+            
+            const date = new Date(dateString);
+            const dayIndex = date.getDay(); // 0 for Sunday, 1 for Monday, and so on
+            
+            setWeekday(daysOfWeek[dayIndex + 2]);
+            setNextWeekday(daysOfWeek[dayIndex + 3]);
+        }
+
+        getDayOfWeek(dateString);
+
         setLocation(data.location.name);
         setCurrentCond(data.current.condition.text);
         setNextDayCond(data.forecast.forecastday[1].day.condition.text);
@@ -118,13 +123,15 @@ const AstroInfo = () => {
         <div>
             {showAstroInfo === true ?
                 <div className="grid h-screen grid-rows-3">
-                    <div id="banner-img" className="z-10 row-span-1" style={{ backgroundImage: `url(${backgroundBanner}`}}>
-                        <div className='w-11/12 mx-auto text-white mt-36 bg-turquoise bg-opacity-40 rounded-xl'>
-                            <div className='flex flex-row justify-between'>
-                                <h1 className='py-2 mx-auto text-2xl font-bold xl:text-4xl 3xl:text-7xl'>{location}</h1>
-                            </div>
+                    <div id="banner-img" className="z-10 grid content-end row-span-1" style={{ backgroundImage: `url(${backgroundBanner}`}}>
+                        <div className='py-2 mx-auto'>
+                            <h1 className='text-5xl font-bold text-white xl:text-4xl 3xl:text-7xl'>{location}</h1>
+                        </div>
+                    </div>
+                    <div className='row-span-2' style={{backgroundColor: `${backgroundColor}`}}>
+                        <div className='w-11/12 mx-auto mt-2 text-white bg-turquoise bg-opacity-40 rounded-xl'>
                             <div>
-                                <div>{tempF}</div>
+                                <div className='text-4xl'>{tempF}&deg;</div>
                                 <div>{currentCond}</div>
                                 <div>Cloud Score: {cloudScore}</div>
                                 <div>Humidity: {humidity}</div>
@@ -139,12 +146,11 @@ const AstroInfo = () => {
                             </ul>*/}
                         </div>
                         <div className='w-11/12 mx-auto mt-2 text-white bg-turquoise bg-opacity-40 rounded-xl'>
-                            <div className='flex flex-row justify-center'><span className='my-auto'>Today</span> <img className='mx-0' src={`${currentCondIcon}`} /></div>   
-                            <div className='flex flex-row justify-center'><span className='my-auto'>Tue</span> <img className='mx-0' src={`${nextDayCondIcon}`} /></div>
-                            <div className='flex flex-row justify-center'><span className='my-auto'>Wed</span> <img className='mx-0' src={`${thirdDayCondIcon}`} /></div>
+                            <div className='flex flex-row justify-center'><span className='my-auto'>Today</span> <img className='mx-0' src={`${currentCondIcon}`} alt='' /></div>   
+                            <div className='flex flex-row justify-center'><span className='my-auto w-11'>{weekday}</span> <img className='mx-0' src={`${nextDayCondIcon}`} alt='' /></div>
+                            <div className='flex flex-row justify-center'><span className='my-auto w-11'>{nextWeekday}</span> <img className='mx-0' src={`${thirdDayCondIcon}`} alt='' /></div>
                         </div>
                     </div>
-                    <div className='row-span-2' style={{backgroundColor: `${backgroundColor}`}}></div>
                 </div> 
                 :
                 <div className="px-2 pb-4 text-center bg-turquoise bg-opacity-40 rounded-xl 3xl:rounded-2xl xl:py-3 3xl:py-8">
