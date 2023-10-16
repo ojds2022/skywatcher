@@ -11,10 +11,10 @@ const Home = () => {
     <div>
       <div>
         <h1 id="title">
-            <LogoAnimation />
+            {/*<LogoAnimation />*/}
         </h1>
       </div>
-      <div id='appear' className='mx-auto place-self-center md:w-1/2'>
+      <div id='' className='mx-auto place-self-center md:w-1/2'>
           <AstroInfo />
       </div>
     </div>

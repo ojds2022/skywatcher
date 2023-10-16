@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 import SunnyLoop from '../assets/sunny-sky.mp4';
 import CloudyLoop from '../assets/cloudy-sky.mp4';
+import OvercastLoop from '../assets/overcast-sky.mp4';
+import RainyLoop from '../assets/rainy-sky.mp4';
 import '../styles/home.css';
 
 const AstroInfo = () => {
@@ -12,7 +14,11 @@ const AstroInfo = () => {
     const [backgroundColor, setBackgroundColor] = useState('');
     const [location, setLocation] = useState('');
     const [currentCond, setCurrentCond] = useState('');
+    const [nextDayCond, setNextDayCond] = useState('');
+    const [thirdDayCond, setThridDayCond] = useState('');
     const [currentCondIcon, setCurrentCondIcon] = useState('');
+    const [nextDayCondIcon, setNextDayCondIcon] = useState('');
+    const [thirdDayCondIcon, setThirdDayCondIcon] = useState('');
     const [cloudScore, setCloudScore] = useState('');
     const [tempF, setTempF] = useState('');
     const [humidity, setHumidity] = useState('');
@@ -25,7 +31,7 @@ const AstroInfo = () => {
 
     function fetchAstronomyInfo() {
         const userInput = document.querySelector('#inputField');
-        const url = `https://weatherapi-com.p.rapidapi.com/current.json?q=${userInput.value}`;
+        const url = `https://weatherapi-com.p.rapidapi.com/forecast.json?q=${userInput.value}&days=3`;
         const options = {
             method: 'GET',
             headers: {
@@ -54,17 +60,30 @@ const AstroInfo = () => {
     }
 
     const postAstroInfo = (data) => {
-        console.log(data.current.condition.text);
+        console.log(data.forecast.forecastday[1].day.condition.icon);
         if (data.current.condition.text === 'Sunny') {
             setBackgroundBanner(SunnyLoop);
             setBackgroundColor('rgb(153, 153, 255, 0.5)');
+        } else if (data.current.condition.text === 'Partly cloudy') {
+            setBackgroundBanner(CloudyLoop);
+            setBackgroundColor('LightSteelBlue');
         } else if (data.current.condition.text === 'Cloudy') {
             setBackgroundBanner(CloudyLoop);
+            setBackgroundColor('SteelBlue');
+        } else if (data.current.condition.text === 'Overcast') {
+            setBackgroundBanner(OvercastLoop);
+            setBackgroundColor('LightSlateGray');
+        } else if (data.current.condition.text === 'Rain' || data.current.condition.text === 'Light rain') {
+            setBackgroundBanner(RainyLoop);
             setBackgroundColor('SteelBlue');
         }
         setLocation(data.location.name);
         setCurrentCond(data.current.condition.text);
+        setNextDayCond(data.forecast.forecastday[1].day.condition.text);
+        setThridDayCond(data.forecast.forecastday[2].day.condition.text);
         setCurrentCondIcon(data.current.condition.icon);
+        setNextDayCondIcon(data.forecast.forecastday[1].day.condition.icon);
+        setThirdDayCondIcon(data.forecast.forecastday[2].day.condition.icon);
         setCloudScore(data.current.cloud);
         setTempF(data.current.temp_f);
         setHumidity(data.current.humidity);
@@ -107,9 +126,8 @@ const AstroInfo = () => {
                             <div>
                                 <div>{tempF}</div>
                                 <div>{currentCond}</div>
-                                <div>{cloudScore}</div>
-                                <div>{humidity}</div>
-                                <div><img src={`${currentCondIcon}`} /></div>
+                                <div>Cloud Score: {cloudScore}</div>
+                                <div>Humidity: {humidity}</div>
                             </div>
                             {/*<ul className='text-lg lg:text-xl xl:text-3xl 3xl:text-6xl'>
                                 <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Sunrise: <span className='mr-10 text-pale-green'>{sunrise}</span></li>
@@ -119,6 +137,11 @@ const AstroInfo = () => {
                                 <li className='flex flex-row justify-between mb-4 ml-2 font-bold text-left xl:pb-3 3xl:pb-20'>Lunar phase: <span className='px-2 text-sm font-thin text-left xl:font-normal xl:text-base 2xl:font-semibold 2xl:text-xl'>click to<br /> learn more &#8594;</span><Link to='/lunar'><button className='p-1 mr-10 rounded-lg bg-light-yellow hover:bg-yellow-300 text-navy xl:p-3 3xl:p-6 3xl:rounded-xl'>{lunarPhase}</button></Link></li>
                                 <li className='flex flex-row justify-between ml-2 font-bold xl:pb-3 3xl:pb-20'>Moon illumination: <span className='mr-10 text-yellow-200'>{moonIll}</span></li>
                             </ul>*/}
+                        </div>
+                        <div className='w-11/12 mx-auto mt-2 text-white bg-turquoise bg-opacity-40 rounded-xl'>
+                            <div className='flex flex-row justify-center'><span className='my-auto'>Today</span> <img className='mx-0' src={`${currentCondIcon}`} /></div>   
+                            <div className='flex flex-row justify-center'><span className='my-auto'>Tue</span> <img className='mx-0' src={`${nextDayCondIcon}`} /></div>
+                            <div className='flex flex-row justify-center'><span className='my-auto'>Wed</span> <img className='mx-0' src={`${thirdDayCondIcon}`} /></div>
                         </div>
                     </div>
                     <div className='row-span-2' style={{backgroundColor: `${backgroundColor}`}}></div>
