@@ -26,6 +26,10 @@ const AstroInfo = () => {
     const [tempF, setTempF] = useState('');
     const [highTempF, setHighTempF] = useState('');
     const [lowTempF, setLowTempF] = useState('');
+    const [highTempF2, setHighTempF2] = useState('');
+    const [lowTempF2, setLowTempF2] = useState('');
+    const [highTempF3, setHighTempF3] = useState('');
+    const [lowTempF3, setLowTempF3] = useState('');
     
     const [weekday, setWeekday] = useState('');
     const [nextWeekday, setNextWeekday] = useState('');
@@ -61,6 +65,9 @@ const AstroInfo = () => {
         if (data.current.condition.text === 'Sunny') {
             setBackgroundBanner(SunnyLoop);
             setBackgroundColor('rgb(153, 153, 255, 0.5)');
+        } else if (data.current.condition.text === 'Mist') {
+            setBackgroundBanner(CloudyLoop);
+            setBackgroundColor('rgb(153, 153, 255, 0.7)');
         } else if (data.current.condition.text === 'Partly cloudy') {
             setBackgroundBanner(CloudyLoop);
             setBackgroundColor('LightSteelBlue');
@@ -100,6 +107,10 @@ const AstroInfo = () => {
         setTempF(Math.round(data.current.temp_f));
         setHighTempF(Math.round(data.forecast.forecastday[0].day.maxtemp_f));
         setLowTempF(Math.round(data.forecast.forecastday[0].day.mintemp_f));
+        setHighTempF2(Math.round(data.forecast.forecastday[1].day.maxtemp_f));
+        setLowTempF2(Math.round(data.forecast.forecastday[1].day.mintemp_f));
+        setHighTempF3(Math.round(data.forecast.forecastday[2].day.maxtemp_f));
+        setLowTempF3(Math.round(data.forecast.forecastday[2].day.mintemp_f));
         setHumidity(data.current.humidity);
         setShowAstroInfo(!showAstroInfo);
         {/*
@@ -155,9 +166,9 @@ const AstroInfo = () => {
                             </ul>*/}
                         </div>
                         <div className='w-11/12 mx-auto mt-1.5 text-white bg-turquoise bg-opacity-40 rounded-xl'>
-                            <div className='flex flex-row justify-center'><span className='my-auto'>Today</span> <img className='mx-0' src={`${currentCondIcon}`} alt='' /></div>   
-                            <div className='flex flex-row justify-center'><span className='my-auto w-11'>{weekday}</span> <img className='mx-0' src={`${nextDayCondIcon}`} alt='' /></div>
-                            <div className='flex flex-row justify-center'><span className='my-auto w-11'>{nextWeekday}</span> <img className='mx-0' src={`${thirdDayCondIcon}`} alt='' /></div>
+                            <div className='flex flex-row justify-center'><span className='my-auto'>Today</span> <img className='mx-0' src={`${currentCondIcon}`} alt='' /><span className='my-auto'>{lowTempF}&deg; - {highTempF}&deg;</span></div>   
+                            <div className='flex flex-row justify-center'><span className='my-auto w-11'>{weekday}</span> <img className='mx-0' src={`${nextDayCondIcon}`} alt='' /><span className='my-auto'>{lowTempF2}&deg; - {highTempF2}&deg;</span></div>
+                            <div className='flex flex-row justify-center'><span className='my-auto w-11'>{nextWeekday}</span> <img className='mx-0' src={`${thirdDayCondIcon}`} alt='' /><span className='my-auto'>{lowTempF3}&deg; - {highTempF3}&deg;</span></div>
                         </div>
                     </div>
                 </div> 

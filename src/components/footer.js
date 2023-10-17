@@ -15,7 +15,7 @@ function Footer() {
   return (
     <>
         {openLinks ?
-            <div className='fixed bottom-0 right-0 z-20 w-1/3 md:w-1/5 h-2/5 navbar bg-turquoise bg-opacity-90'>
+            <div className='fixed bottom-0 right-0 z-20 w-1/3 md:w-1/5 h-2/5 navbar bg-turquoise bg-opacity-70'>
                 <div className="flex flex-col items-center mt-5 grow gap-y-5 3xl:gap-y-16">
                     <button id="arrowUp" className='bg-transparent border-0 cursor-pointer' onClick={toggleNavbar}>
                         <KeyboardArrowUpIcon />
