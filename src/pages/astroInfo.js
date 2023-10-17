@@ -12,19 +12,26 @@ const AstroInfo = () => {
     
     const [backgroundBanner, setBackgroundBanner] = useState('');
     const [backgroundColor, setBackgroundColor] = useState('');
+
     const [location, setLocation] = useState('');
+
     const [currentCond, setCurrentCond] = useState('');
     const [nextDayCond, setNextDayCond] = useState('');
     const [thirdDayCond, setThridDayCond] = useState('');
+
     const [currentCondIcon, setCurrentCondIcon] = useState('');
     const [nextDayCondIcon, setNextDayCondIcon] = useState('');
     const [thirdDayCondIcon, setThirdDayCondIcon] = useState('');
-    const [cloudScore, setCloudScore] = useState('');
-    const [tempF, setTempF] = useState('');
-    const [humidity, setHumidity] = useState('');
 
+    const [tempF, setTempF] = useState('');
+    const [highTempF, setHighTempF] = useState('');
+    const [lowTempF, setLowTempF] = useState('');
+    
     const [weekday, setWeekday] = useState('');
     const [nextWeekday, setNextWeekday] = useState('');
+
+    const [cloudScore, setCloudScore] = useState('');
+    const [humidity, setHumidity] = useState('');
 
     const [sunrise, setSunrise] = useState('');
     const [sunset, setSunset] = useState('');
@@ -50,7 +57,7 @@ const AstroInfo = () => {
     }
 
     const postAstroInfo = (data) => {
-        console.log(data);
+        console.log(data.forecast.forecastday[0].day.maxtemp_f);
         if (data.current.condition.text === 'Sunny') {
             setBackgroundBanner(SunnyLoop);
             setBackgroundColor('rgb(153, 153, 255, 0.5)');
@@ -63,7 +70,7 @@ const AstroInfo = () => {
         } else if (data.current.condition.text === 'Overcast') {
             setBackgroundBanner(OvercastLoop);
             setBackgroundColor('LightSlateGray');
-        } else if (data.current.condition.text === 'Rain' || data.current.condition.text === 'Light rain') {
+        } else if (data.current.condition.text === 'Rain' || data.current.condition.text === 'Light rain' || data.current.condition.text === 'Heavy rain') {
             setBackgroundBanner(RainyLoop);
             setBackgroundColor('SteelBlue');
         }
@@ -90,7 +97,9 @@ const AstroInfo = () => {
         setNextDayCondIcon(data.forecast.forecastday[1].day.condition.icon);
         setThirdDayCondIcon(data.forecast.forecastday[2].day.condition.icon);
         setCloudScore(data.current.cloud);
-        setTempF(data.current.temp_f);
+        setTempF(Math.round(data.current.temp_f));
+        setHighTempF(Math.round(data.forecast.forecastday[0].day.maxtemp_f));
+        setLowTempF(Math.round(data.forecast.forecastday[0].day.mintemp_f));
         setHumidity(data.current.humidity);
         setShowAstroInfo(!showAstroInfo);
         {/*
@@ -133,8 +142,8 @@ const AstroInfo = () => {
                             <div>
                                 <div className='text-4xl'>{tempF}&deg;</div>
                                 <div>{currentCond}</div>
-                                <div>Cloud Score: {cloudScore}</div>
-                                <div>Humidity: {humidity}</div>
+                                <div>High: {highTempF}&deg;</div>
+                                <div>Low: {lowTempF}&deg;</div>
                             </div>
                             {/*<ul className='text-lg lg:text-xl xl:text-3xl 3xl:text-6xl'>
                                 <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Sunrise: <span className='mr-10 text-pale-green'>{sunrise}</span></li>
@@ -145,7 +154,7 @@ const AstroInfo = () => {
                                 <li className='flex flex-row justify-between ml-2 font-bold xl:pb-3 3xl:pb-20'>Moon illumination: <span className='mr-10 text-yellow-200'>{moonIll}</span></li>
                             </ul>*/}
                         </div>
-                        <div className='w-11/12 mx-auto mt-2 text-white bg-turquoise bg-opacity-40 rounded-xl'>
+                        <div className='w-11/12 mx-auto mt-1.5 text-white bg-turquoise bg-opacity-40 rounded-xl'>
                             <div className='flex flex-row justify-center'><span className='my-auto'>Today</span> <img className='mx-0' src={`${currentCondIcon}`} alt='' /></div>   
                             <div className='flex flex-row justify-center'><span className='my-auto w-11'>{weekday}</span> <img className='mx-0' src={`${nextDayCondIcon}`} alt='' /></div>
                             <div className='flex flex-row justify-center'><span className='my-auto w-11'>{nextWeekday}</span> <img className='mx-0' src={`${thirdDayCondIcon}`} alt='' /></div>
