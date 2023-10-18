@@ -108,7 +108,13 @@ const AstroInfo = () => {
         setThirdDayCondIcon(data.forecast.forecastday[2].day.condition.icon);
         setCloudScore(data.current.cloud);
         setTempF(Math.round(data.current.temp_f));
-        setHighTempF(Math.round(data.forecast.forecastday[0].day.maxtemp_f));
+
+        if (Math.round(data.current.temp_f) > Math.round(data.forecast.forecastday[0].day.maxtemp_f)) {
+            setHighTempF(Math.round(data.current.temp_f))
+        } else {
+            setHighTempF(Math.round(data.forecast.forecastday[0].day.maxtemp_f));
+        }
+        
         setLowTempF(Math.round(data.forecast.forecastday[0].day.mintemp_f));
         setHighTempF2(Math.round(data.forecast.forecastday[1].day.maxtemp_f));
         setLowTempF2(Math.round(data.forecast.forecastday[1].day.mintemp_f));
