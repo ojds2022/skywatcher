@@ -1,5 +1,4 @@
 import './App.css';
-import Footer from './components/footer';
 import Home from './pages/home';
 import About from './pages/about';
 import Contact from './pages/contact';
@@ -19,7 +18,6 @@ function App() {
           <Route path="/astro" element={<AstroInfo />}/>
           <Route path="/lunar" element={<LunarPhase />}/>
         </Routes>
-        <Footer />
       </Router>
     </div>
   );

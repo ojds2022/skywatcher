@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import CloseIcon from '@mui/icons-material/Close';
+import { LogoAnimation } from '../components/logoAnimation';
 import SunnyLoop from '../assets/sunny-sky.mp4';
 import CloudyLoop from '../assets/cloudy-sky.mp4';
 import OvercastLoop from '../assets/overcast-sky.mp4';
 import RainyLoop from '../assets/rainy-sky.mp4';
+import Brightness4SharpIcon from '@mui/icons-material/Brightness4Sharp';
+import ReorderIcon from '@mui/icons-material/Reorder';
 import '../styles/home.css';
+import '../styles/navbar.css';
 
 const AstroInfo = () => {
     const [showAstroInfo, setShowAstroInfo] = useState(false);
@@ -61,7 +64,7 @@ const AstroInfo = () => {
     }
 
     const postAstroInfo = (data) => {
-        console.log(data.forecast.forecastday[0].day.maxtemp_f);
+        //console.log(data.forecast.forecastday[0].day.maxtemp_f);
         if (data.current.condition.text === 'Sunny') {
             setBackgroundBanner(SunnyLoop);
             setBackgroundColor('rgb(153, 153, 255, 0.5)');
@@ -112,7 +115,8 @@ const AstroInfo = () => {
         setHighTempF3(Math.round(data.forecast.forecastday[2].day.maxtemp_f));
         setLowTempF3(Math.round(data.forecast.forecastday[2].day.mintemp_f));
         setHumidity(data.current.humidity);
-        setShowAstroInfo(!showAstroInfo);
+
+        setShowAstroInfo(true);
         {/*
         setSunrise(data.astronomy.astro.sunrise);
         setSunset(data.astronomy.astro.sunset);
@@ -121,10 +125,6 @@ const AstroInfo = () => {
         setLunarPhase(data.astronomy.astro.moon_phase);
         setMoonIll(data.astronomy.astro.moon_illumination);
     */}
-    }
-
-    const closeAstroInfo = () => {
-        setShowAstroInfo(!showAstroInfo);
     }
 
     useEffect(() => {
@@ -171,13 +171,32 @@ const AstroInfo = () => {
                             <div className='flex flex-row justify-center'><span className='my-auto w-11'>{nextWeekday}</span> <img className='mx-0' src={`${thirdDayCondIcon}`} alt='' /><span className='my-auto'>{lowTempF3}&deg; - {highTempF3}&deg;</span></div>
                         </div>
                     </div>
+                    <div>
+                        <div className="fixed bottom-0 left-0 z-20 flex flex-row w-full navbar h-14 xl:h-20 3xl:h-32 bg-turquoise bg-opacity-40">
+                            <div className="flex items-center justify-between px-6 grow">
+                                <button id="navbarLogo" className='pt-1 text-white cursor-pointer hover:text-pale-green' onClick={() => setShowAstroInfo(false)}>
+                                    <Brightness4SharpIcon />
+                                </button>
+                                <button id="burger" className='bg-transparent border-0 cursor-pointer' onClick={() => setShowAstroInfo(false)}>
+                                    <ReorderIcon />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div> 
                 :
-                <div className="px-2 pb-4 text-center bg-turquoise bg-opacity-40 rounded-xl 3xl:rounded-2xl xl:py-3 3xl:py-8">
-                      <h2 className='mb-5 text-xl font-bold text-white md:text-2xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter your city or zip-code:</h2>
-                      <input id="inputField" className='focus:outline-none md:w-44 md:h-7 xl:w-60 xl:h-10 xl:text-lg 3xl:w-80 3xl:h-16 3xl:text-3xl' type="text" placeholder="Enter here..."/>
-                      <button id="searchButton" className='px-1 ml-2 text-white rounded hover:bg-pale-green bg-light-purple hover:text-black md:h-7 md:w-16 xl:h-10 xl:w-20 xl:text-lg xl:ml-5 3xl:h-16 3xl:w-32 3xl:rounded-xl' type="submit" onClick={fetchAstronomyInfo}>Search</button>
+                <div className='h-screen p-3 bg-sunny-background'>
+                    <div className="grid content-center h-full px-2 text-center bg-opacity-40 bg-turquoise rounded-xl">
+                        <span><LogoAnimation /></span>
+                        <span className='pb-5 text-white text-8xl'><Brightness4SharpIcon fontSize='' /></span>
+                        <h2 className='pb-5 text-xl font-bold text-white md:text-2xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter a city or zip-code</h2>
+                        <span>
+                        <input id="inputField" className='w-1/2 focus:outline-none md:w-44 md:h-7 xl:w-60 xl:h-10 xl:text-lg 3xl:w-80 3xl:h-16 3xl:text-3xl' type="text" placeholder="Enter here..."/>
+                        <button id="searchButton" type='submit' className='px-1 ml-2 text-white rounded hover:bg-pale-green bg-light-purple hover:text-black md:h-7 md:w-16 xl:h-10 xl:w-20 xl:text-lg xl:ml-5 3xl:h-16 3xl:w-32 3xl:rounded-xl' onClick={fetchAstronomyInfo}>Search</button>
+                        </span>
+                    </div>
                 </div>
+                
             }
         </div>
     );

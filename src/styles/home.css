@@ -43,64 +43,59 @@ animation: disappear 1s ease forwards 9s;
 }
 
 #logo {
-width: 90%;
-position: absolute;
-top: 40%;
-left: 50%;
-transform: translate(-50%, -50%);
-animation: fill 0.5s ease forwards 5.65s;
+width: 100%;
+animation: fill 0.5s ease forwards 2.5s;
 }
-
 
 #path1 { /* selects and animates each letter 1-by-1 */
 stroke-dasharray: 1663.21289;
 stroke-dashoffset: 1663.21289;
-animation: line-anim 5s ease forwards .4s;
+animation: line-anim 2s ease forwards .2s;
 }
 #path2 {
 stroke-dasharray: 1618.801;
 stroke-dashoffset: 1618.801;
-animation: line-anim 5s ease forwards .8s;
+animation: line-anim 2s ease forwards .4s;
 }
 #path3 {
 stroke-dasharray: 1203.791;
 stroke-dashoffset: 1203.791;
-animation: line-anim 5s ease forwards 1.2s;
+animation: line-anim 2s ease forwards .6s;
 }
 #path4 {
 stroke-dasharray: 2671.156;
 stroke-dashoffset: 2671.156;
-animation: line-anim 5s ease forwards 1.6s;
+animation: line-anim 2s ease forwards .8s;
 }
 #path5 {
 stroke-dasharray: 1747.446;
 stroke-dashoffset: 1747.446;
-animation: line-anim 5s ease forwards 2s;
+animation: line-anim 2s ease forwards 1s;
 }
 #path6 {
 stroke-dasharray: 988.5;
 stroke-dashoffset: 988.5;
-animation: line-anim 5s ease forwards 2.4s;
+animation: line-anim 2s ease forwards 1.2s;
 }
 #path7 {
 stroke-dasharray: 1368.874;
 stroke-dashoffset: 1368.874;
-animation: line-anim 5s ease forwards 2.8s;
+animation: line-anim 2s ease forwards 1.4s;
 }
 #path8 {
 stroke-dasharray: 1674.378;
 stroke-dashoffset: 1674.378;
-animation: line-anim 5s ease forwards 3.2s;
+animation: line-anim 2s ease forwards 1.6s;
 }
 #path9 {
 stroke-dasharray: 1516.116;
 stroke-dashoffset: 1516.116;
-animation: line-anim 5s ease forwards 3.6s;
+animation: line-anim 2s ease forwards 1.8s;
 }
 #path10 {
 stroke-dasharray: 1880.372;
 stroke-dashoffset: 1880.372;
-animation: line-anim 5s ease forwards 4s;
+animation: line-anim 2s ease forwards 2s;
 }
 
 @keyframes line-anim {

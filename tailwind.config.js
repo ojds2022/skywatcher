@@ -12,6 +12,7 @@ module.exports = {
         "turquoise": "#00c8c8",
         "light-yellow": "#fffff4",
         "navy": "#000080",
+        "sunny-background": "rgb(153, 153, 255, 0.5)",
       }
     },
     screens: {
