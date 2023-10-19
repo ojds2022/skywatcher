@@ -192,14 +192,14 @@ const AstroInfo = () => {
                 </div> 
                 :
                 <div className='h-screen p-3 bg-sunny-background'>
-                    <div className="grid content-center h-full px-2 text-center bg-opacity-40 bg-turquoise rounded-xl">
-                        <span><LogoAnimation /></span>
-                        <span className='pb-5 text-white text-8xl'><Brightness4SharpIcon fontSize='' /></span>
-                        <h2 className='pb-5 text-xl font-bold text-white md:text-2xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter a city or zip-code</h2>
-                        <span>
-                        <input id="inputField" className='w-1/2 focus:outline-none md:w-44 md:h-7 xl:w-60 xl:h-10 xl:text-lg 3xl:w-80 3xl:h-16 3xl:text-3xl' type="text" placeholder="Enter here..."/>
-                        <button id="searchButton" type='submit' className='px-1 ml-2 text-white rounded hover:bg-pale-green bg-light-purple hover:text-black md:h-7 md:w-16 xl:h-10 xl:w-20 xl:text-lg xl:ml-5 3xl:h-16 3xl:w-32 3xl:rounded-xl' onClick={fetchAstronomyInfo}>Search</button>
-                        </span>
+                    <div className="grid h-full grid-rows-3 px-2 text-center bg-opacity-40 bg-turquoise rounded-xl">
+                        <div className='mt-10'><LogoAnimation /></div>
+                        <div className='text-white text-8xl'><Brightness4SharpIcon fontSize='' /></div>
+                        <div>
+                            <h2 className='pb-5 text-xl font-bold text-white md:text-2xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter a city or zip-code</h2>
+                            <input id="inputField" className='w-1/2 focus:outline-none md:w-44 md:h-7 xl:w-60 xl:h-10 xl:text-lg 3xl:w-80 3xl:h-16 3xl:text-3xl' type="text" placeholder="Enter here..."/>
+                            <button id="searchButton" type='submit' className='px-1 ml-2 text-white rounded hover:bg-pale-green bg-light-purple hover:text-black md:h-7 md:w-16 xl:h-10 xl:w-20 xl:text-lg xl:ml-5 3xl:h-16 3xl:w-32 3xl:rounded-xl' onClick={fetchAstronomyInfo}>Search</button>
+                        </div>
                     </div>
                 </div>
                 
