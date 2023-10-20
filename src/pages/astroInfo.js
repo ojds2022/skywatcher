@@ -1,10 +1,14 @@
 import React, {useState, useEffect} from 'react';
+
+import Footer from '../components/footer';
 import { Link } from 'react-router-dom';
 import { LogoAnimation } from '../components/logoAnimation';
 import SunnyLoop from '../assets/sunny-sky.mp4';
 import CloudyLoop from '../assets/cloudy-sky.mp4';
 import OvercastLoop from '../assets/overcast-sky.mp4';
 import RainyLoop from '../assets/rainy-sky.mp4';
+
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Brightness4SharpIcon from '@mui/icons-material/Brightness4Sharp';
 import ReorderIcon from '@mui/icons-material/Reorder';
 import '../styles/home.css';
@@ -93,8 +97,17 @@ const AstroInfo = () => {
             const date = new Date(dateString);
             const dayIndex = date.getDay(); // 0 for Sunday, 1 for Monday, and so on
             
-            setWeekday(daysOfWeek[dayIndex + 2]);
-            setNextWeekday(daysOfWeek[dayIndex + 3]);
+            if (dayIndex <= 4) {
+                setWeekday(daysOfWeek[dayIndex + 2]);
+            } else if (dayIndex >= 5) {
+                setWeekday(daysOfWeek[dayIndex - 5]);
+            } 
+
+            if (dayIndex <= 3) {
+                setNextWeekday(daysOfWeek[dayIndex + 3]);
+            } else if (dayIndex >= 4) {
+                setNextWeekday(daysOfWeek[dayIndex - 4]);
+            }
         }
 
         getDayOfWeek(dateString);
@@ -172,20 +185,30 @@ const AstroInfo = () => {
                             </ul>*/}
                         </div>
                         <div className='w-11/12 mx-auto mt-1.5 text-white bg-turquoise bg-opacity-40 rounded-xl'>
-                            <div className='flex flex-row justify-center'><span className='my-auto'>Today</span> <img className='mx-0' src={`${currentCondIcon}`} alt='' /><span className='my-auto'>{lowTempF}&deg; - {highTempF}&deg;</span></div>   
-                            <div className='flex flex-row justify-center'><span className='my-auto w-11'>{weekday}</span> <img className='mx-0' src={`${nextDayCondIcon}`} alt='' /><span className='my-auto'>{lowTempF2}&deg; - {highTempF2}&deg;</span></div>
-                            <div className='flex flex-row justify-center'><span className='my-auto w-11'>{nextWeekday}</span> <img className='mx-0' src={`${thirdDayCondIcon}`} alt='' /><span className='my-auto'>{lowTempF3}&deg; - {highTempF3}&deg;</span></div>
+                            <div className='flex flex-row justify-center'>
+                                <span className='my-auto'>Today</span> 
+                                <img className='mx-0' src={`${currentCondIcon}`} alt='' />
+                                <span className='my-auto'>{lowTempF}&deg; - {highTempF}&deg;</span>
+                            </div>   
+                            <div className='flex flex-row justify-center'>
+                                <span className='my-auto w-11'>{weekday}</span> 
+                                <img className='mx-0' src={`${nextDayCondIcon}`} alt='' />
+                                <span className='my-auto'>{lowTempF2}&deg; - {highTempF2}&deg;</span>
+                            </div>
+                        <div className='flex flex-row justify-center'><span className='my-auto w-11'>{nextWeekday}</span> <img className='mx-0' src={`${thirdDayCondIcon}`} alt='' /><span className='my-auto'>{lowTempF3}&deg; - {highTempF3}&deg;</span></div>
                         </div>
                     </div>
                     <div>
                         <div className="fixed bottom-0 left-0 z-20 flex flex-row w-full navbar h-14 xl:h-20 3xl:h-32 bg-turquoise bg-opacity-40">
                             <div className="flex items-center justify-between px-6 grow">
-                                <button id="navbarLogo" className='pt-1 text-white cursor-pointer hover:text-pale-green' onClick={() => setShowAstroInfo(false)}>
-                                    <Brightness4SharpIcon />
-                                </button>
-                                <button id="burger" className='bg-transparent border-0 cursor-pointer' onClick={() => setShowAstroInfo(false)}>
-                                    <ReorderIcon />
-                                </button>
+                                <div>
+                                    <button id="navbarLogo" className='pt-1 text-white cursor-pointer hover:text-pale-green' onClick={() => setShowAstroInfo(false)}>
+                                        <ArrowBackIcon />
+                                    </button>
+                                </div>
+                                <div className=''>
+                                    <Footer />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -193,8 +216,12 @@ const AstroInfo = () => {
                 :
                 <div className='h-screen p-3 bg-sunny-background'>
                     <div className="grid h-full grid-rows-3 px-2 text-center bg-opacity-40 bg-turquoise rounded-xl">
-                        <div className='mt-10'><LogoAnimation /></div>
-                        <div className='text-white text-8xl'><Brightness4SharpIcon fontSize='' /></div>
+                        <div className='mt-10'>
+                            <LogoAnimation />
+                        </div>
+                        <div className='text-white text-8xl'>
+                            <Brightness4SharpIcon fontSize='' />
+                        </div>
                         <div>
                             <h2 className='pb-5 text-xl font-bold text-white md:text-2xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter a city or zip-code</h2>
                             <input id="inputField" className='w-1/2 focus:outline-none md:w-44 md:h-7 xl:w-60 xl:h-10 xl:text-lg 3xl:w-80 3xl:h-16 3xl:text-3xl' type="text" placeholder="Enter here..."/>

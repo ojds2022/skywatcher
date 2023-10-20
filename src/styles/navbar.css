@@ -5,11 +5,11 @@
 #burger svg:hover {
   color: PaleGreen;
 }
-#arrowUp svg {
+#burger-open svg {
   font-size: 38px;
   color: white;
 }
-#arrowUp svg:hover {
+#burger-open svg:hover {
   color: PaleGreen;
 }
 #navbarLogo svg {
