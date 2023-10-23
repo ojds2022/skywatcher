@@ -196,7 +196,7 @@ const AstroInfo = () => {
                             <div className="flex items-center justify-between px-6 grow">
                                 <div>
                                     <button id="navbarLogo" className='pt-1 text-white cursor-pointer hover:text-pale-green' onClick={() => setShowAstroInfo(false)}>
-                                        <ArrowBackIcon />
+                                        <ArrowBackIcon fontSize='large' />
                                     </button>
                                 </div>
                                 <div className=''>
@@ -217,8 +217,8 @@ const AstroInfo = () => {
                         </div>
                         <div>
                             <h2 className='pb-5 text-xl font-bold text-white md:text-2xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter a city or zip-code</h2>
-                            <input id="inputField" className='w-1/2 focus:outline-none md:w-44 md:h-7 xl:w-60 xl:h-10 xl:text-lg 3xl:w-80 3xl:h-16 3xl:text-3xl' type="text" placeholder="Enter here..."/>
-                            <button id="searchButton" type='submit' className='px-1 ml-2 text-white rounded hover:bg-pale-green bg-light-purple hover:text-black md:h-7 md:w-16 xl:h-10 xl:w-20 xl:text-lg xl:ml-5 3xl:h-16 3xl:w-32 3xl:rounded-xl' onClick={fetchAstronomyInfo}>Search</button>
+                            <input id="inputField" className='w-1/2 py-1 rounded focus:outline-none md:w-44 md:h-7 xl:w-60 xl:h-10 xl:text-lg 3xl:w-80 3xl:h-16 3xl:text-3xl' type="text" placeholder="Enter here..."/>
+                            <button id="searchButton" type='submit' className='px-2 py-1 ml-2 text-white rounded hover:bg-pale-green bg-light-purple hover:text-black md:h-7 md:w-16 xl:h-10 xl:w-20 xl:text-lg xl:ml-5 3xl:h-16 3xl:w-32 3xl:rounded-xl' onClick={fetchAstronomyInfo}>Search</button>
                         </div>
                     </div>
                 </div>
