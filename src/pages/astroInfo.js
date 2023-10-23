@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 import Footer from '../components/footer';
-import { Link } from 'react-router-dom';
 import { LogoAnimation } from '../components/logoAnimation';
+
 import SunnyLoop from '../assets/sunny-sky.mp4';
 import CloudyLoop from '../assets/cloudy-sky.mp4';
 import OvercastLoop from '../assets/overcast-sky.mp4';
@@ -10,9 +11,9 @@ import RainyLoop from '../assets/rainy-sky.mp4';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Brightness4SharpIcon from '@mui/icons-material/Brightness4Sharp';
-import ReorderIcon from '@mui/icons-material/Reorder';
+
 import '../styles/home.css';
-import '../styles/navbar.css';
+import '../styles/footer.css';
 
 const AstroInfo = () => {
     const [showAstroInfo, setShowAstroInfo] = useState(false);
@@ -175,14 +176,6 @@ const AstroInfo = () => {
                                 <div>High: {highTempF}&deg;</div>
                                 <div>Low: {lowTempF}&deg;</div>
                             </div>
-                            {/*<ul className='text-lg lg:text-xl xl:text-3xl 3xl:text-6xl'>
-                                <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Sunrise: <span className='mr-10 text-pale-green'>{sunrise}</span></li>
-                                <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Sunset: <span className='mr-10 text-pale-green'>{sunset}</span></li>
-                                <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Moonrise: <span className='mr-10 text-pale-green'>{moonrise}</span></li>
-                                <li className='flex flex-row justify-between mb-4 ml-2 font-bold xl:pb-3 3xl:pb-20'>Moonset: <span className='mr-10 text-pale-green'>{moonset}</span></li>
-                                <li className='flex flex-row justify-between mb-4 ml-2 font-bold text-left xl:pb-3 3xl:pb-20'>Lunar phase: <span className='px-2 text-sm font-thin text-left xl:font-normal xl:text-base 2xl:font-semibold 2xl:text-xl'>click to<br /> learn more &#8594;</span><Link to='/lunar'><button className='p-1 mr-10 rounded-lg bg-light-yellow hover:bg-yellow-300 text-navy xl:p-3 3xl:p-6 3xl:rounded-xl'>{lunarPhase}</button></Link></li>
-                                <li className='flex flex-row justify-between ml-2 font-bold xl:pb-3 3xl:pb-20'>Moon illumination: <span className='mr-10 text-yellow-200'>{moonIll}</span></li>
-                            </ul>*/}
                         </div>
                         <div className='w-11/12 mx-auto mt-1.5 text-white bg-turquoise bg-opacity-40 rounded-xl'>
                             <div className='flex flex-row justify-center'>
@@ -219,8 +212,8 @@ const AstroInfo = () => {
                         <div className='mt-10'>
                             <LogoAnimation />
                         </div>
-                        <div className='text-white text-8xl'>
-                            <Brightness4SharpIcon fontSize='' />
+                        <div id='sun-logo' className='text-white'>
+                            <Brightness4SharpIcon />
                         </div>
                         <div>
                             <h2 className='pb-5 text-xl font-bold text-white md:text-2xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter a city or zip-code</h2>

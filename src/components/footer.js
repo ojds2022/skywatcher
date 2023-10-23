@@ -7,7 +7,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Brightness4SharpIcon from '@mui/icons-material/Brightness4Sharp';
 import { AstroInfo } from '../pages/astroInfo';
-import '../styles/navbar.css';
+import '../styles/footer.css';
 
 function Footer() {
     const [openLinks, setOpenLinks] = useState(false);
