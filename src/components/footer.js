@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Home from '../pages/home';
 import ReorderIcon from '@mui/icons-material/Reorder';
-import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import CloseIcon from '@mui/icons-material/Close';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import Brightness4SharpIcon from '@mui/icons-material/Brightness4Sharp';
-import { AstroInfo } from '../pages/astroInfo';
 import '../styles/footer.css';
 
 function Footer() {
