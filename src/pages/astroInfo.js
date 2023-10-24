@@ -15,7 +15,7 @@ import Brightness4SharpIcon from '@mui/icons-material/Brightness4Sharp';
 import '../styles/home.css';
 import '../styles/footer.css';
 
-const AstroInfo = () => {
+const WeatherAndAstroInfo = () => {
     const [showAstroInfo, setShowAstroInfo] = useState(false);
     
     const [backgroundBanner, setBackgroundBanner] = useState('');
@@ -228,4 +228,4 @@ const AstroInfo = () => {
     );
 }
 
-export {AstroInfo};
+export {WeatherAndAstroInfo};
