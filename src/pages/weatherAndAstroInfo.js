@@ -5,6 +5,7 @@ import Footer from '../components/footer';
 import { LogoAnimation } from '../components/logoAnimation';
 
 import SunnyLoop from '../assets/sunny-sky.mp4';
+import ClearSky from '../assets/clear-sky.jpg';
 import CloudyLoop from '../assets/cloudy-sky.mp4';
 import OvercastLoop from '../assets/overcast-sky.mp4';
 import RainyLoop from '../assets/rainy-sky.mp4';
@@ -70,9 +71,12 @@ const WeatherAndAstroInfo = () => {
     }
 
     const postAstroInfo = (data) => {
-        //console.log(data.forecast.forecastday[0].day.maxtemp_f);
+        console.log(data.forecast.forecastday[0].astro.sunrise);
         if (data.current.condition.text === 'Sunny') {
             setBackgroundBanner(SunnyLoop);
+            setBackgroundColor('rgb(153, 153, 255, 0.5)');
+        } else if (data.current.condition.text === 'Clear') {
+            setBackgroundBanner(ClearSky);
             setBackgroundColor('rgb(153, 153, 255, 0.5)');
         } else if (data.current.condition.text === 'Mist') {
             setBackgroundBanner(CloudyLoop);
@@ -137,13 +141,15 @@ const WeatherAndAstroInfo = () => {
         setLowTempF3(Math.round(data.forecast.forecastday[2].day.mintemp_f));
         setHumidity(data.current.humidity);
 
+        setSunrise(data.forecast.forecastday[0].astro.sunrise);
+        setSunset(data.forecast.forecastday[0].astro.sunset);
+        setMoonrise(data.forecast.forecastday[0].astro.moonrise);
+        setMoonset(data.forecast.forecastday[0].astro.moonset);
+        setLunarPhase(data.forecast.forecastday[0].astro.moon_phase);
+
         setShowWeatherInfo(true);
         {/*
-        setSunrise(data.astronomy.astro.sunrise);
-        setSunset(data.astronomy.astro.sunset);
-        setMoonrise(data.astronomy.astro.moonrise);
-        setMoonset(data.astronomy.astro.moonset);
-        setLunarPhase(data.astronomy.astro.moon_phase);
+        
         setMoonIll(data.astronomy.astro.moon_illumination);
     */}
     }
@@ -207,6 +213,14 @@ const WeatherAndAstroInfo = () => {
                         </div>
                     </div>
                 </div> 
+                : showAstroInfo === true ?
+                <div>
+                    <div>{sunrise}</div>
+                    <div>{sunset}</div>
+                    <div>{moonrise}</div>
+                    <div>{moonset}</div>
+                    <div>{lunarPhase}</div>
+                </div>
                 :
                 <div className='h-screen p-3 bg-sunny-background'>
                     <div className="grid h-full grid-rows-3 px-2 text-center bg-opacity-40 bg-turquoise rounded-xl">
