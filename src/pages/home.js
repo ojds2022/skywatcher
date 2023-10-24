@@ -1,5 +1,5 @@
 import React from 'react';
-import { WeatherAndAstroInfo } from './astroInfo';
+import { WeatherAndAstroInfo } from './weatherAndAstroInfo';
 import '../styles/home.css';
 
 

@@ -2,7 +2,7 @@ import './App.css';
 import Home from './pages/home';
 import About from './pages/about';
 import Contact from './pages/contact';
-import { WeatherAndAstroInfo } from './pages/astroInfo';
+import { WeatherAndAstroInfo } from './pages/weatherAndAstroInfo';
 import { LunarPhase } from './pages/lunarPhase';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
