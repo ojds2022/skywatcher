@@ -16,6 +16,7 @@ import '../styles/home.css';
 import '../styles/footer.css';
 
 const WeatherAndAstroInfo = () => {
+    const [showWeatherInfo, setShowWeatherInfo] = useState(false);
     const [showAstroInfo, setShowAstroInfo] = useState(false);
     
     const [backgroundBanner, setBackgroundBanner] = useState('');
@@ -136,7 +137,7 @@ const WeatherAndAstroInfo = () => {
         setLowTempF3(Math.round(data.forecast.forecastday[2].day.mintemp_f));
         setHumidity(data.current.humidity);
 
-        setShowAstroInfo(true);
+        setShowWeatherInfo(true);
         {/*
         setSunrise(data.astronomy.astro.sunrise);
         setSunset(data.astronomy.astro.sunset);
@@ -161,7 +162,7 @@ const WeatherAndAstroInfo = () => {
 
     return (
         <div>
-            {showAstroInfo === true ?
+            {showWeatherInfo === true ?
                 <div className="grid h-screen grid-rows-3">
                     <div id="banner-img" className="z-10 grid content-end row-span-1" style={{ backgroundImage: `url(${backgroundBanner}`}}>
                         <div className='py-2 mx-auto'>
@@ -195,7 +196,7 @@ const WeatherAndAstroInfo = () => {
                         <div className="fixed bottom-0 left-0 z-20 flex flex-row w-full navbar h-14 xl:h-20 3xl:h-32 bg-turquoise bg-opacity-40">
                             <div className="flex items-center justify-between px-6 grow">
                                 <div>
-                                    <button id="navbarLogo" className='pt-1 text-white cursor-pointer hover:text-pale-green' onClick={() => setShowAstroInfo(false)}>
+                                    <button id="navbarLogo" className='pt-1 text-white cursor-pointer hover:text-pale-green' onClick={() => setShowWeatherInfo(false)}>
                                         <ArrowBackIcon fontSize='large' />
                                     </button>
                                 </div>
