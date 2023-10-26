@@ -1,5 +1,5 @@
 import React from 'react';
-import { WeatherAndAstroInfo } from './weatherAndAstroInfo';
+import { WeatherInfo } from './weatherInfo';
 import '../styles/home.css';
 
 
@@ -7,7 +7,7 @@ import '../styles/home.css';
 const Home = () => {
   return (
     <div className=''>
-      <WeatherAndAstroInfo />
+      <WeatherInfo />
     </div>
   );
 }

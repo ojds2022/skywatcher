@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
 
 import Footer from '../components/footer';
 import { LogoAnimation } from '../components/logoAnimation';
@@ -14,9 +13,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Brightness4SharpIcon from '@mui/icons-material/Brightness4Sharp';
 
 import '../styles/home.css';
-import '../styles/footer.css';
 
-const WeatherAndAstroInfo = () => {
+const WeatherInfo = () => {
     const [showWeatherInfo, setShowWeatherInfo] = useState(false);
     const [showAstroInfo, setShowAstroInfo] = useState(false);
     
@@ -71,7 +69,7 @@ const WeatherAndAstroInfo = () => {
     }
 
     const postAstroInfo = (data) => {
-        console.log(data.forecast.forecastday[0].astro.sunrise);
+        console.log();
         if (data.current.condition.text === 'Sunny') {
             setBackgroundBanner(SunnyLoop);
             setBackgroundColor('rgb(153, 153, 255, 0.5)');
@@ -148,10 +146,6 @@ const WeatherAndAstroInfo = () => {
         setLunarPhase(data.forecast.forecastday[0].astro.moon_phase);
 
         setShowWeatherInfo(true);
-        {/*
-        
-        setMoonIll(data.astronomy.astro.moon_illumination);
-    */}
     }
 
     useEffect(() => {
@@ -213,14 +207,6 @@ const WeatherAndAstroInfo = () => {
                         </div>
                     </div>
                 </div> 
-                : showAstroInfo === true ?
-                <div>
-                    <div>{sunrise}</div>
-                    <div>{sunset}</div>
-                    <div>{moonrise}</div>
-                    <div>{moonset}</div>
-                    <div>{lunarPhase}</div>
-                </div>
                 :
                 <div className='h-screen p-3 bg-sunny-background'>
                     <div className="grid h-full grid-rows-3 px-2 text-center bg-opacity-40 bg-turquoise rounded-xl">
@@ -239,8 +225,9 @@ const WeatherAndAstroInfo = () => {
                 </div>
                 
             }
+            <div className='hidden'></div>
         </div>
     );
 }
 
-export {WeatherAndAstroInfo};
+export {WeatherInfo};
