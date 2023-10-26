@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
+import { AstroInfo } from './astroInfo';
 import Footer from '../components/footer';
 import { LogoAnimation } from '../components/logoAnimation';
 
@@ -77,6 +78,9 @@ const WeatherInfo = () => {
             setBackgroundBanner(ClearSky);
             setBackgroundColor('rgb(153, 153, 255, 0.5)');
         } else if (data.current.condition.text === 'Mist') {
+            setBackgroundBanner(CloudyLoop);
+            setBackgroundColor('rgb(153, 153, 255, 0.7)');
+        } else if (data.current.condition.text === 'Fog') {
             setBackgroundBanner(CloudyLoop);
             setBackgroundColor('rgb(153, 153, 255, 0.7)');
         } else if (data.current.condition.text === 'Partly cloudy') {
@@ -201,11 +205,23 @@ const WeatherInfo = () => {
                                     </button>
                                 </div>
                                 <div className=''>
-                                    <Footer />
+                                    <Footer showAstroInfo={setShowAstroInfo} showWeatherInfo={setShowWeatherInfo} />
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                : showAstroInfo === true ? 
+                <div>
+                    <AstroInfo 
+                        sunrise={sunrise} 
+                        sunset={sunset} 
+                        moonrise={moonrise} 
+                        moonset={moonset} 
+                        lunarPhase={lunarPhase}
+                        showWeatherInfo={setShowWeatherInfo}
+                        showAstroInfo={setShowAstroInfo} 
+                    />
                 </div> 
                 :
                 <div className='h-screen p-3 bg-sunny-background'>
