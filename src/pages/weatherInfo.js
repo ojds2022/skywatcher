@@ -103,7 +103,7 @@ const WeatherInfo = () => {
         if (data.current.is_day === 1) {
             setBackgroundColor('rgb(153, 153, 255, 0.5)')
         } else {
-            setBackgroundColor('rgb(60, 60, 255, 0.5)')
+            setBackgroundColor('rgb(20, 20, 255, 0.5)')
         }
 
         const dateString = data.forecast.forecastday[0].date;
