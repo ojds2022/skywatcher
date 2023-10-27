@@ -83,28 +83,26 @@ const WeatherInfo = () => {
         console.log(data.current.is_day);
         if (data.current.condition.text === 'Sunny') {
             setBackgroundBanner(SunnyLoop);
-            setBackgroundColor('rgb(153, 153, 255, 0.5)');
         } else if (data.current.condition.text === 'Clear') {
             setBackgroundBanner(ClearSky);
-            setBackgroundColor('rgb(153, 153, 255, 0.5)');
         } else if (data.current.condition.text === 'Mist') {
             setBackgroundBanner(CloudyLoop);
-            setBackgroundColor('rgb(153, 153, 255, 0.7)');
         } else if (data.current.condition.text === 'Fog') {
             setBackgroundBanner(CloudyLoop);
-            setBackgroundColor('rgb(153, 153, 255, 0.7)');
         } else if (data.current.condition.text === 'Partly cloudy') {
             setBackgroundBanner(CloudyLoop);
-            setBackgroundColor('LightSteelBlue');
         } else if (data.current.condition.text === 'Cloudy') {
             setBackgroundBanner(CloudyLoop);
-            setBackgroundColor('SteelBlue');
         } else if (data.current.condition.text === 'Overcast') {
             setBackgroundBanner(OvercastLoop);
-            setBackgroundColor('LightSlateGray');
         } else if (data.current.condition.text === 'Rain' || data.current.condition.text === 'Light rain' || data.current.condition.text === 'Heavy rain') {
             setBackgroundBanner(RainyLoop);
-            setBackgroundColor('SteelBlue');
+        }
+
+        if (data.current.is_day === 1) {
+            setBackgroundColor('rgb(153, 153, 255, 0.5)')
+        } else {
+            setBackgroundColor('rgb(60, 60, 255, 0.5)')
         }
 
         const dateString = data.forecast.forecastday[0].date;
@@ -159,7 +157,7 @@ const WeatherInfo = () => {
         setMoonset(data.forecast.forecastday[0].astro.moonset);
         setLunarPhase(data.forecast.forecastday[0].astro.moon_phase);
 
-        {data.forecast.forecastday[0].astro.moon_phase === 'Full Moon' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={FullMoon} alt='' />)
+        data.forecast.forecastday[0].astro.moon_phase === 'Full Moon' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={FullMoon} alt='' />)
             : data.forecast.forecastday[0].astro.moon_phase === 'New Moon' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={NewMoon} alt='' />)
             : data.forecast.forecastday[0].astro.moon_phase === 'Third Quarter' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={ThirdQuarterMoon} alt='' />)
             : data.forecast.forecastday[0].astro.moon_phase === 'Waning Cresent' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={WaningCresMoon} alt='' />)
@@ -168,7 +166,6 @@ const WeatherInfo = () => {
             : data.forecast.forecastday[0].astro.moon_phase === 'Waxing Gibbous' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={WaxingGibMoon} alt='' />)
             : data.forecast.forecastday[0].astro.moon_phase === 'First Quarter' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={FirstQuarterMoon} alt='' />)
             : <div></div>
-            }
 
         setShowWeatherInfo(true);
     }
@@ -235,6 +232,7 @@ const WeatherInfo = () => {
                 : showAstroInfo === true ? 
                 <div>
                     <AstroInfo 
+                        backgroundColor={backgroundColor}
                         sunrise={sunrise} 
                         sunset={sunset} 
                         moonrise={moonrise} 
@@ -246,7 +244,7 @@ const WeatherInfo = () => {
                     />
                 </div> 
                 :
-                <div className='h-screen p-3 bg-sunny-background'>
+                <div className='h-screen p-3 bg-violet-purple'>
                     <div className="grid h-full grid-rows-3 px-2 text-center bg-opacity-40 bg-turquoise rounded-xl">
                         <div className='mt-10'>
                             <LogoAnimation />
