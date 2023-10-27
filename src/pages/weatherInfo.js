@@ -10,6 +10,15 @@ import CloudyLoop from '../assets/cloudy-sky.mp4';
 import OvercastLoop from '../assets/overcast-sky.mp4';
 import RainyLoop from '../assets/rainy-sky.mp4';
 
+import FullMoon from '../assets/fullMoon.png';
+import NewMoon from '../assets/newMoon.png';
+import ThirdQuarterMoon from '../assets/thirdQuarterMoon.png';
+import WaningCresMoon from '../assets/waningCresMoon.png';
+import WaxingCresMoon from '../assets/waxingCresMoon.png';
+import WaningGibMoon from '../assets/waningGibMoon.png';
+import WaxingGibMoon from '../assets/waxingGibMoon.png';
+import FirstQuarterMoon from '../assets/firstQuarterMoon.png';
+
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Brightness4SharpIcon from '@mui/icons-material/Brightness4Sharp';
 
@@ -51,6 +60,7 @@ const WeatherInfo = () => {
     const [moonrise, setMoonrise] = useState('');
     const [moonset, setMoonset] = useState('');
     const [lunarPhase, setLunarPhase] = useState('');
+    const [lunarImage, setLunarImage] = useState(null);
 
     function fetchAstronomyInfo() {
         const userInput = document.querySelector('#inputField');
@@ -70,7 +80,7 @@ const WeatherInfo = () => {
     }
 
     const postAstroInfo = (data) => {
-        console.log();
+        console.log(data.current.is_day);
         if (data.current.condition.text === 'Sunny') {
             setBackgroundBanner(SunnyLoop);
             setBackgroundColor('rgb(153, 153, 255, 0.5)');
@@ -149,6 +159,17 @@ const WeatherInfo = () => {
         setMoonset(data.forecast.forecastday[0].astro.moonset);
         setLunarPhase(data.forecast.forecastday[0].astro.moon_phase);
 
+        {data.forecast.forecastday[0].astro.moon_phase === 'Full Moon' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={FullMoon} alt='' />)
+            : data.forecast.forecastday[0].astro.moon_phase === 'New Moon' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={NewMoon} alt='' />)
+            : data.forecast.forecastday[0].astro.moon_phase === 'Third Quarter' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={ThirdQuarterMoon} alt='' />)
+            : data.forecast.forecastday[0].astro.moon_phase === 'Waning Cresent' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={WaningCresMoon} alt='' />)
+            : data.forecast.forecastday[0].astro.moon_phase === 'Waxing Cresent' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={WaxingCresMoon} alt='' />)
+            : data.forecast.forecastday[0].astro.moon_phase === 'Waning Gibbous' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={WaningGibMoon} alt='' />)
+            : data.forecast.forecastday[0].astro.moon_phase === 'Waxing Gibbous' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={WaxingGibMoon} alt='' />)
+            : data.forecast.forecastday[0].astro.moon_phase === 'First Quarter' ? setLunarImage(<img className='opacity-75 hover:opacity-100 rounded-3xl' src={FirstQuarterMoon} alt='' />)
+            : <div></div>
+            }
+
         setShowWeatherInfo(true);
     }
 
@@ -219,6 +240,7 @@ const WeatherInfo = () => {
                         moonrise={moonrise} 
                         moonset={moonset} 
                         lunarPhase={lunarPhase}
+                        lunarImage={lunarImage}
                         showWeatherInfo={setShowWeatherInfo}
                         showAstroInfo={setShowAstroInfo} 
                     />
