@@ -5,7 +5,8 @@ import Footer from '../components/footer';
 import { LogoAnimation } from '../components/logoAnimation';
 
 import SunnyLoop from '../assets/sunny-sky.mp4';
-import ClearSky from '../assets/clear-sky.jpg';
+import ClearSkyLoop from '../assets/clear-sky.mp4';
+import PartlyCloudyLoop from '../assets/partly-cloudy.mp4';
 import CloudyLoop from '../assets/cloudy-sky.mp4';
 import OvercastLoop from '../assets/overcast-sky.mp4';
 import RainyLoop from '../assets/rainy-sky.mp4';
@@ -84,13 +85,13 @@ const WeatherInfo = () => {
         if (data.current.condition.text === 'Sunny') {
             setBackgroundBanner(SunnyLoop);
         } else if (data.current.condition.text === 'Clear') {
-            setBackgroundBanner(ClearSky);
+            setBackgroundBanner(ClearSkyLoop);
         } else if (data.current.condition.text === 'Mist') {
             setBackgroundBanner(CloudyLoop);
         } else if (data.current.condition.text === 'Fog') {
             setBackgroundBanner(CloudyLoop);
         } else if (data.current.condition.text === 'Partly cloudy') {
-            setBackgroundBanner(CloudyLoop);
+            setBackgroundBanner(PartlyCloudyLoop);
         } else if (data.current.condition.text === 'Cloudy') {
             setBackgroundBanner(CloudyLoop);
         } else if (data.current.condition.text === 'Overcast') {
@@ -186,7 +187,7 @@ const WeatherInfo = () => {
         <div>
             {showWeatherInfo === true ?
                 <div className="grid h-screen grid-rows-3">
-                    <div id="banner-img" className="z-10 grid content-end row-span-1" style={{ backgroundImage: `url(${backgroundBanner}`}}>
+                    <div id="banner-img" className="z-10 grid content-end row-span-1" style={{ backgroundImage: `url(${backgroundBanner}` }}>
                         <div className='py-2 mx-auto'>
                             <h1 className='text-5xl font-bold text-white xl:text-4xl 3xl:text-7xl'>{location}</h1>
                         </div>
