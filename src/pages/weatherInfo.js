@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { AstroInfo } from './astroInfo';
 import Footer from '../components/footer';
 import { LogoAnimation } from '../components/logoAnimation';
+import SunAndCloudLogo from '../assets/sun-cloud.png';
 
 import SunnyLoop from '../assets/sunny-sky.mp4';
 import ClearSkyLoop from '../assets/clear-sky.mp4';
@@ -24,6 +25,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Brightness4SharpIcon from '@mui/icons-material/Brightness4Sharp';
 
 import '../styles/home.css';
+import '../styles/footer.css';
 
 const WeatherInfo = () => {
     const [showWeatherInfo, setShowWeatherInfo] = useState(false);
@@ -247,11 +249,11 @@ const WeatherInfo = () => {
                 :
                 <div className='h-screen p-3 bg-violet-purple'>
                     <div className="grid h-full grid-rows-3 px-2 text-center bg-opacity-40 bg-turquoise rounded-xl">
-                        <div className='mt-10'>
+                        <div className='mt-20'>
                             <LogoAnimation />
                         </div>
-                        <div id='sun-logo' className='text-white'>
-                            <Brightness4SharpIcon />
+                        <div>
+                            <img src={SunAndCloudLogo} id='sun-logo' className='w-3/5 mx-auto' alt='' />
                         </div>
                         <div>
                             <h2 className='pb-5 text-xl font-bold text-white md:text-2xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter a city or zip-code</h2>

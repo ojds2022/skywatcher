@@ -12,9 +12,8 @@
 #burger-open svg:hover {
   color: tomato;
 }
-#sun-logo svg {
-  font-size: 120px;
-  animation: 5s ease-in -2s appear;
+#sun-logo {
+  animation: 4.75s ease-in -2s appear;
 }
 
 .navbar a {
