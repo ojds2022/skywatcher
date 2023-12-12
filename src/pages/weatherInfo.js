@@ -191,36 +191,36 @@ const WeatherInfo = () => {
                 <div className="grid h-screen grid-rows-3">
                     <div id="banner-img" className="z-10 grid content-end row-span-1" style={{ backgroundImage: `url(${backgroundBanner}` }}>
                         <div className='py-2 mx-auto'>
-                            <h1 className='text-5xl font-bold text-white xxs:text-6xl lg:text-7xl'>{location}</h1>
+                            <h1 className='text-5xl font-bold text-white xxs:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl'>{location}</h1>
                         </div>
                     </div>
-                    <div className='row-span-2' style={{backgroundColor: `${backgroundColor}`}}>
-                        <div className='w-11/12 mx-auto mt-2 text-white lg:w-3/5 bg-turquoise bg-opacity-40 rounded-xl'>
+                    <div className='row-span-2 pt-1 xs:pt-2 2xl:pt-4' style={{backgroundColor: `${backgroundColor}`}}>
+                        <div className='w-11/12 mx-auto text-white md:w-3/5 2xl:w-2/5 bg-turquoise bg-opacity-40 rounded-xl'>
                             <div>
-                                <div className='text-4xl xxs:text-6xl xs:text-7xl lg:text-8xl'>{tempF}&deg;</div>
-                                <div className='lg:pb-1 xxs:text-xl xs:text-2xl lg:text-3xl'>{currentCond}</div>
-                                <div className='lg:pb-1 xxs:text-xl xs:text-2xl lg:text-3xl'>High: {highTempF}&deg;</div>
-                                <div className='lg:pb-1 xxs:text-xl xs:text-2xl lg:text-3xl'>Low: {lowTempF}&deg;</div>
+                                <div className='text-4xl xxs:text-6xl xs:text-7xl md:text-6xl lg:text-8xl 2xl:text-9xl'>{tempF}&deg;</div>
+                                <div className='lg:pb-1 xxs:text-xl xs:text-2xl md:text-xl lg:text-3xl 2xl:text-4xl'>{currentCond}</div>
+                                <div className='lg:pb-1 xxs:text-xl xs:text-2xl md:text-xl lg:text-3xl 2xl:text-4xl'>High: {highTempF}&deg;</div>
+                                <div className='lg:pb-1 xxs:text-xl xs:text-2xl md:text-xl lg:text-3xl 2xl:text-4xl'>Low: {lowTempF}&deg;</div>
                             </div>
                         </div>
-                        <div className='xxs:text-2xl lg:text-3xl xxs:py-4 xs:py-6 lg:py-3 w-11/12 lg:w-3/5 mx-auto mt-1.5 text-white bg-turquoise bg-opacity-40 rounded-xl'>
-                            <div className='flex flex-row justify-center'>
+                        <div className='xxs:text-2xl md:text-xl xl:text-3xl 2xl:text-4xl xxs:py-4 xs:py-6 md:py-0 xl:py-3 w-11/12 md:w-3/5 2xl:w-2/5 mx-auto mt-1.5 text-white bg-turquoise bg-opacity-40 rounded-xl'>
+                            <div className='flex flex-row justify-center md:h-14 2xl:h-24'>
                                 <span className='my-auto lg:mr-5'>Today</span> 
                                 <img className='mx-0' src={`${currentCondIcon}`} alt='' />
                                 <span className='my-auto'>{lowTempF}&deg; - {highTempF}&deg;</span>
                             </div>   
-                            <div className='flex flex-row justify-center'>
+                            <div className='flex flex-row justify-center md:h-14 2xl:h-24'>
                                 <span className='my-auto w-11 lg:mr-10'>{weekday}</span> 
                                 <img className='mx-0' src={`${nextDayCondIcon}`} alt='' />
                                 <span className='my-auto'>{lowTempF2}&deg; - {highTempF2}&deg;</span>
                             </div>
-                            <div className='flex flex-row justify-center'>
+                            <div className='flex flex-row justify-center md:h-14 2xl:h-24'>
                                 <span className='my-auto w-11 lg:mr-10'>{nextWeekday}</span> <img className='mx-0' src={`${thirdDayCondIcon}`} alt='' /><span className='my-auto'>{lowTempF3}&deg; - {highTempF3}&deg;</span>
                             </div>
                         </div>
                     </div>
                     <div>
-                        <div className="fixed bottom-0 left-0 z-20 flex flex-row w-full navbar h-14 xl:h-20 3xl:h-32 bg-turquoise bg-opacity-40">
+                        <div className="fixed bottom-0 left-0 z-20 flex flex-row w-full navbar h-14 lg:h-20 2xl:h-28 3xl:h-32 bg-turquoise bg-opacity-40">
                             <div className="flex items-center justify-between px-6 grow">
                                 <div>
                                     <button id="navbarLogo" className='pt-1 text-white cursor-pointer hover:text-pale-green' onClick={() => setShowWeatherInfo(false)}>

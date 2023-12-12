@@ -41,6 +41,20 @@
   }
 }
 
+@media screen and (min-width: 1111px) {
+  #burger svg {
+      font-size: 50px;
+      color: white;
+  }
+  #arrowUp svg {
+      font-size: 50px;
+      color: white;
+  }
+  #navbarLogo svg {
+      font-size: 50px;
+  }
+}
+
 @media screen and (min-width: 1440px) {
   #burger svg {
       font-size: 50px;
@@ -52,6 +66,19 @@
   }
   #navbarLogo svg {
       font-size: 50px;
+  }
+}
+@media screen and (min-width: 1920px) {
+  #burger svg {
+      font-size: 70px;
+      color: white;
+  }
+  #arrowUp svg {
+      font-size: 70px;
+      color: white;
+  }
+  #navbarLogo svg {
+      font-size: 70px;
   }
 }
 @media screen and (min-width: 2560px) {
