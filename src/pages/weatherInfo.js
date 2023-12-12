@@ -251,16 +251,16 @@ const WeatherInfo = () => {
                 :
                 <div className='h-screen p-3 bg-violet-purple'>
                     <div className="grid h-full grid-rows-3 px-2 text-center bg-opacity-40 bg-turquoise rounded-xl">
-                        <div className='mt-20'>
+                        <div className='mt-20 2xl:mt-40'>
                             <LogoAnimation />
                         </div>
                         <div>
-                            <img src={SunAndCloudLogo} id='sun-logo' className='w-3/5 mx-auto lg:w-1/4 ' alt='' />
+                            <img src={SunAndCloudLogo} id='sun-logo' className='w-3/5 mx-auto md:w-1/4 xl:w-1/5' alt='' />
                         </div>
-                        <div>
-                            <h2 className='pb-5 text-xl font-bold text-white md:text-2xl lg:text-3xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter a city or zip-code</h2>
+                        <div className='xl:pt-10'>
+                            <h2 className='pb-5 text-xl font-bold text-white md:text-2xl lg:text-3xl xl:text-5xl xl:pb-8 3xl:text-6xl'>Enter a city or zip-code</h2>
                             <input id="inputField" className='w-1/2 py-1 rounded focus:outline-none md:w-44 md:h-7 lg:h-8 xl:w-60 xl:h-10 lg:w-60 lg:text-xl 3xl:w-80 3xl:h-16 3xl:text-3xl' type="text" placeholder="Enter here..."/>
-                            <button id="searchButton" type='submit' className='px-2 py-1 ml-2 text-white rounded hover:bg-pale-green bg-light-purple hover:text-black md:h-7 md:w-16 lg:h-8 lg:w-24 xl:text-lg xl:ml-5 3xl:h-16 3xl:w-32 3xl:rounded-xl' onClick={fetchAstronomyInfo}>Search</button>
+                            <button id="searchButton" type='submit' className='px-2 py-1 ml-2 text-white rounded hover:bg-pale-green bg-light-purple hover:text-black md:h-7 md:w-16 lg:h-8 lg:w-24 xl:h-10 xl:text-lg xl:ml-5 3xl:h-16 3xl:w-32 3xl:rounded-xl' onClick={fetchAstronomyInfo}>Search</button>
                         </div>
                     </div>
                 </div>
