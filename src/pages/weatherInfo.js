@@ -191,30 +191,32 @@ const WeatherInfo = () => {
                 <div className="grid h-screen grid-rows-3">
                     <div id="banner-img" className="z-10 grid content-end row-span-1" style={{ backgroundImage: `url(${backgroundBanner}` }}>
                         <div className='py-2 mx-auto'>
-                            <h1 className='text-5xl font-bold text-white xl:text-4xl 3xl:text-7xl'>{location}</h1>
+                            <h1 className='text-5xl font-bold text-white xxs:text-6xl lg:text-7xl'>{location}</h1>
                         </div>
                     </div>
                     <div className='row-span-2' style={{backgroundColor: `${backgroundColor}`}}>
-                        <div className='w-11/12 mx-auto mt-2 text-white bg-turquoise bg-opacity-40 rounded-xl'>
+                        <div className='w-11/12 mx-auto mt-2 text-white lg:w-3/5 bg-turquoise bg-opacity-40 rounded-xl'>
                             <div>
-                                <div className='text-4xl'>{tempF}&deg;</div>
-                                <div>{currentCond}</div>
-                                <div>High: {highTempF}&deg;</div>
-                                <div>Low: {lowTempF}&deg;</div>
+                                <div className='text-4xl xxs:text-6xl xs:text-7xl lg:text-8xl'>{tempF}&deg;</div>
+                                <div className='lg:pb-1 xxs:text-xl xs:text-2xl lg:text-3xl'>{currentCond}</div>
+                                <div className='lg:pb-1 xxs:text-xl xs:text-2xl lg:text-3xl'>High: {highTempF}&deg;</div>
+                                <div className='lg:pb-1 xxs:text-xl xs:text-2xl lg:text-3xl'>Low: {lowTempF}&deg;</div>
                             </div>
                         </div>
-                        <div className='w-11/12 mx-auto mt-1.5 text-white bg-turquoise bg-opacity-40 rounded-xl'>
+                        <div className='xxs:text-2xl lg:text-3xl xxs:py-4 xs:py-6 lg:py-3 w-11/12 lg:w-3/5 mx-auto mt-1.5 text-white bg-turquoise bg-opacity-40 rounded-xl'>
                             <div className='flex flex-row justify-center'>
-                                <span className='my-auto'>Today</span> 
+                                <span className='my-auto lg:mr-5'>Today</span> 
                                 <img className='mx-0' src={`${currentCondIcon}`} alt='' />
                                 <span className='my-auto'>{lowTempF}&deg; - {highTempF}&deg;</span>
                             </div>   
                             <div className='flex flex-row justify-center'>
-                                <span className='my-auto w-11'>{weekday}</span> 
+                                <span className='my-auto w-11 lg:mr-10'>{weekday}</span> 
                                 <img className='mx-0' src={`${nextDayCondIcon}`} alt='' />
                                 <span className='my-auto'>{lowTempF2}&deg; - {highTempF2}&deg;</span>
                             </div>
-                        <div className='flex flex-row justify-center'><span className='my-auto w-11'>{nextWeekday}</span> <img className='mx-0' src={`${thirdDayCondIcon}`} alt='' /><span className='my-auto'>{lowTempF3}&deg; - {highTempF3}&deg;</span></div>
+                            <div className='flex flex-row justify-center'>
+                                <span className='my-auto w-11 lg:mr-10'>{nextWeekday}</span> <img className='mx-0' src={`${thirdDayCondIcon}`} alt='' /><span className='my-auto'>{lowTempF3}&deg; - {highTempF3}&deg;</span>
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -253,12 +255,12 @@ const WeatherInfo = () => {
                             <LogoAnimation />
                         </div>
                         <div>
-                            <img src={SunAndCloudLogo} id='sun-logo' className='w-3/5 mx-auto' alt='' />
+                            <img src={SunAndCloudLogo} id='sun-logo' className='w-3/5 mx-auto lg:w-1/4 ' alt='' />
                         </div>
                         <div>
-                            <h2 className='pb-5 text-xl font-bold text-white md:text-2xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter a city or zip-code</h2>
-                            <input id="inputField" className='w-1/2 py-1 rounded focus:outline-none md:w-44 md:h-7 xl:w-60 xl:h-10 xl:text-lg 3xl:w-80 3xl:h-16 3xl:text-3xl' type="text" placeholder="Enter here..."/>
-                            <button id="searchButton" type='submit' className='px-2 py-1 ml-2 text-white rounded hover:bg-pale-green bg-light-purple hover:text-black md:h-7 md:w-16 xl:h-10 xl:w-20 xl:text-lg xl:ml-5 3xl:h-16 3xl:w-32 3xl:rounded-xl' onClick={fetchAstronomyInfo}>Search</button>
+                            <h2 className='pb-5 text-xl font-bold text-white md:text-2xl lg:text-3xl xl:text-4xl xl:mb-12 3xl:text-6xl'>Enter a city or zip-code</h2>
+                            <input id="inputField" className='w-1/2 py-1 rounded focus:outline-none md:w-44 md:h-7 lg:h-8 xl:w-60 xl:h-10 lg:w-60 lg:text-xl 3xl:w-80 3xl:h-16 3xl:text-3xl' type="text" placeholder="Enter here..."/>
+                            <button id="searchButton" type='submit' className='px-2 py-1 ml-2 text-white rounded hover:bg-pale-green bg-light-purple hover:text-black md:h-7 md:w-16 lg:h-8 lg:w-24 xl:text-lg xl:ml-5 3xl:h-16 3xl:w-32 3xl:rounded-xl' onClick={fetchAstronomyInfo}>Search</button>
                         </div>
                     </div>
                 </div>

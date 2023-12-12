@@ -139,3 +139,15 @@ to {
   transform-origin: center
 }
 }
+
+@media screen and (min-width: 1023px) {
+  #banner-img {
+    background-size: cover;
+
+  }
+
+  #logo {
+    width: 80%;
+    margin: 0 auto;
+  }
+}

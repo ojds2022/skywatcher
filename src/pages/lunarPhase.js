@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
-import BannerImage from '../assets/nightSky.jpg';
 import FullMoon from '../assets/fullMoon.png';
 import NewMoon from '../assets/newMoon.png';
 import ThirdQuarterMoon from '../assets/thirdQuarterMoon.png';
@@ -40,7 +39,7 @@ const LunarPhase = () => {
     
 
   return (
-    <div id="home-container" className="grid h-screen grid-rows-3" style={{ backgroundImage: `url(${BannerImage})` }}>
+    <div id="home-container" className="grid h-screen grid-rows-3">
         <div className='z-50 grid w-3/4 row-start-2 px-4 pt-1 m-auto lg:w-1/2 md:row-start-1 md:mt-24 lg:mt-32 xl:mt-40 3xl:mt-80 md:px-8 xl:pt-3 3xl:pl-20 3xl:pt-10 rounded-3xl bg-turquoise bg-opacity-70'>
             <div className='flex justify-end'>
                 <Link to='/'>
